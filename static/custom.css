@@ -1,0 +1,180 @@
+[data-bs-toggle="tooltip"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--bs-dark-border-subtle) !important;
+  --bs-nav-tabs-link-hover-border-color: var(--bs-dark-border-subtle) var(--bs-dark-border-subtle) var(--bs-nav-tabs-border-color) !important;
+  --bs-nav-tabs-link-active-border-color: var(--bs-dark-border-subtle) var(--bs-dark-border-subtle) var(--bs-body-bg) !important;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+    --bd-color-bg: #900C3F;
+    --bd-color-rgb: 144, 12, 63;
+
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-color-bg);
+    --bs-btn-border-color: var(--bd-color-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: var(--bd-color-bg);
+    --bs-btn-hover-border-color: var(--bd-color-bg);
+    --bs-btn-focus-shadow-rgb: var(--bd-color-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: var(--bd-color-bg);
+    --bs-btn-active-border-color: var(--bd-color-bg);
+}
+
+.bd-mode-toggle {
+    z-index: 1500;
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block !important;
+}
+
+.text-truncate-2 {
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+/* --- Sidebar settings --- */
+
+.nav-link {
+    padding-left: 0em;
+    padding-right: 0em;
+    padding-top: 0.85em;
+    padding-bottom: 0.85em;
+}
+
+@media (min-width: 768px) {
+    .nav-link-text-custom {
+        display: none;
+    }
+    .sidebar {
+        width: 48px;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-link-text-custom {
+        display: block;
+    }
+    .sidebar {
+        width: 320px;
+    }
+}
+
+.blink {
+    animation: blinker 1.0s infinite linear;
+}
+
+.blink-3x {
+    animation: blinker 1.0s 3 linear;
+}
+
+@keyframes blinker {
+    50% {
+        color: red;
+        opacity: 0;
+    }
+}
+
+#page-content {
+    height: calc(100vh - 70px);
+}
+
+.blocked-click {
+    cursor: not-allowed !important;
+}
+
+.cursor-move {
+    cursor: move;
+}
+
+.font-extra-small {
+    font-size: 0.70rem; /* Smaller than the default .small utility */
+}
+
+/* Limits the results container height to approximately 10 items */
+.select2-results .select2-results__options {
+    max-height: 200px; /* Adjust this value to change the visible item count */
+    overflow-y: auto; /* Enables vertical scrolling when content exceeds max-height */
+}
+
+svg text {
+    user-select: none;
+}
+
+.scrollable-list {
+    max-height: 200px; /* Set the maximum height for the list */
+    overflow-y: auto;  /* Add vertical scrollbar only when content overflows */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    list-style-type: none; /* Optional: removes bullet points */
+    padding: 0; /* Optional: removes default padding */
+    margin: 0; /* Optional: removes default margin */
+    border: 1px solid #ccc; /* Optional: adds a border to visualize the container */
+}
+
+
+/* Move the icon to the left side */
+.accordion-button::after {
+    order: -1;
+    margin-left: 0;
+    margin-right: 0.5em; /* Spacing between the icon and text */
+}
+
+/* Aligns text to the left and ensures flex layout */
+.accordion-button {
+    display: flex;
+    align-items: center;
+}
+
+/* Removes background color and shadow when the accordion is open */
+.accordion-item {
+    --bs-accordion-active-bg: transparent;
+    --bs-accordion-active-color: #212529; /* Default text color */
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+
+/* Reduces the size of the accordion arrow icon */
+.accordion-button::after {
+    background-size: 0.8rem; /* Adjust this value to change the icon scale */
+    width: 0.8rem;           /* Ensure width matches background-size for centering */
+    height: 0.8rem;          /* Ensure height matches background-size for centering */
+}

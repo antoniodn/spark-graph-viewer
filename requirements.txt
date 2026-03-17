@@ -1,0 +1,20 @@
+fastapi
+uvicorn[standard]
+Jinja2
+pyspark==4.0.1
+pyspark[connect]
+deltalake
+delta-spark==4.0.1
+
+# Jupyter Notebook
+notebook
+
+# Databricks SQL Connector
+databricks-sql-connector[pyarrow]
+
+# Test Dependencies
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0
+httpx>=0.24.0

@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en" translate="no">
+
+<head>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+    <meta name="description" content="Graphs with Apache Spark.">
+	<meta name="keywords" content="Databricks, Apache Spark, Graphs, GraphFrames, GraphX, Big Data, Data Engineering, Data Science">
+    <meta name="author" content="Antonio Domingues Neto">
+	<meta http-equiv="version" content="1" />
+	
+    <title>Spark Graph Viewer</title>
+    <link rel="icon" href="/static/favicon.ico">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.bundle.min.js" integrity="sha512-HvOjJrdwNpDbkGJIG2ZNqDlVqMo77qbs4Me4cah0HoDrfhrbA+8SBlZn1KrvAQw7cILLPFJvdwIgphzQmMm+Pw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js" integrity="sha512-wNH6xsp2n8CfB91nrBtfc4sfLwYPBMjSWVUwQOp60AYYXH6i8yCwuKFZ4rgK2i6pQek/b+bSyR7b01/922IBzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="/static/custom.css" />
+</head>
+
+<body class="overflow-hidden">
+    <!-- Cabeçalho da Página -->
+    <header class="navbar bg-gradient navbar-expand d-flex mx-0 py-0">
+        <div class="flex-grow-1">
+            <h5 class="navbar-brand me-0 px-3 fs-6 my-0">
+                <img src="/static/ico.png"class="d-inline-block align-text-top me-2" width="24" height="24" alt="Spark Graph Viewer" >
+                <span>Spark Graph Viewer</span>
+            </h5>
+        </div>
+        <button class="nav-link d-md-none p-0 me-2 text-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars fa-xl text-secondary" role="img" aria-label="Menu"></i>
+        </button>
+    </header>
+    <!-- \ Cabeçalho da Página -->
+
+    <!-- corpo da página -->
+    <main class="d-flex flex-nowrap flex-shrink-0 flex-grow-1">
+        <div class="container-fluid d-flex flex-nowrap p-0">
+
+            <!-- Barra Lateral -->
+            <div class="sidebar container-fluid d-md-flex flex-column p-0 offcanvas-md offcanvas-end" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="sidebarMenuLabel">
+                        <img src="/static/ico.png"class="d-inline-block align-text-top me-2" width="24" height="24" alt="Spark Graph Viewer" >
+                        <span>Spark Graph Viewer</span>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body d-md-flex flex-column p-0 overflow-y-auto">
+                    <ul class="nav flex-column">
+
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="sidebar-btn-new-graph-notebook">
+                                <i class="fa-regular fa-file fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="New Graph Notebook" data-bs-original-title="New Graph Notebook"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">New Graph Notebook</span>
+                            </a>
+                        </li>
+                        
+                        <hr class="nav-item my-0 mx-2">
+                        
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="sidebar-btn-save-graph-notebook">
+                                <i class="fa-regular fa-floppy-disk fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="Save Graph Notebook" data-bs-original-title="Save Graph Notebook"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">Save Graph Notebook</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="sidebar-btn-open-graph-notebook">
+                                <i class="fa-regular fa-folder-open fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="Open Graph Notebook" data-bs-original-title="Open Graph Notebook"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">Open Graph Notebook</span>
+                            </a>
+                        </li>
+
+                        <hr class="nav-item my-0 mx-2">
+
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="hexagon-nodessidebar-btn-graph-motif-find">
+                                <i class="fa-solid fa-magnifying-glass fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="New Motif Query" data-bs-original-title="New Motif Query"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">New Motif Query</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="sidebar-btn-graph-all-path">
+                                <i class="fa-solid fa-hexagon-nodes fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="New All Path" data-bs-original-title="New All Path"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">New All Path</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="sidebar-btn-graph-shortest-path">
+                                <i class="fa-solid fa-share-nodes fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="New Shortest Path" data-bs-original-title="New Shortest Path"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">New Shortest Path</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item mx-2">
+                            <a class="nav-link d-flex align-items-center text-dark" role="button" id="sidebar-btn-graph-vertex-triangulation">
+                                <i class="fa-solid fa-recycle fa-xl bi mx-0 text-secondary" role="img" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-animation="false" data-bs-placement="right" aria-label="Vertex Triangulation" data-bs-original-title="New Vertex Triangulation"></i>
+                                <span class="nav-link-text-custom ms-3 text-secondary">New Vertex Triangulation</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- \ Barra Lateral-->
+    
+            <!-- Conteúdo -->
+            <div id="page-content" class="container-fluid d-flex flex-column flex-shrink-1 m-2 p-0">
+
+                <div class="blink p-0 m-0 mb-2 text-center border border-secondary bg-secondary-subtle w-100 rounded-pill alert-message-border">
+                    <span class="small fst-italic opacity-75 text-secondary alert-message">Wait, loading data...</span>
+                </div>
+
+                <ul class="nav nav-tabs graphTabHeader" role="tablist">
+                    <li class="nav-item datasourceHeaderTab" role="presentation">
+                        <button class="nav-link px-4 py-2 tab-datasource active" id="datasource-tab" data-bs-toggle="tab" data-bs-target="#datasourcePanel" type="button" role="tab" aria-controls="datasourcePanel" aria-selected="true" style="min-height:45px;">
+                            <i class="fa-solid fa-database"></i>
+                            <span class="ms-1">Data Source</span>                            
+                        </button>                        
+                    </li>
+                </ul>
+                <div class="tab-content border-dark-subtle border-start border-end border-bottom w-100 h-100 overflow-auto graphTabContent">
+                    
+                    <div class="tab-pane fade p-3 show active" id="datasourcePanel" role="tabpanel" aria-labelledby="datasource-tab">
+
+                        <div class="mt-3 m-0 p-0 row">
+                            <div class="col m-0 p-0">
+                                <span class="h6">1. Data Source</span>
+                                <hr class="m-0 p-0"/>
+                                <div class="mt-3 ms-3 p-0 row">
+                                    <label for="catalogTable" class="col-form-label ps-0">1.1. Catalog</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="catalogTable"></select>
+                                    </div>
+                                </div>
+                                <div class="mt-3 ms-3 p-0 row">
+                                    <label for="schemaTable" class="col-form-label ps-0">1.2. Schema</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="schemaTable"></select>
+                                    </div>
+                                </div>
+                                <div class="mt-3 ms-3 p-0 row">
+                                    <label for="verticesTable" class="col-form-label ps-0">1.3. Vertices Table</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="verticesTable"></select>
+                                        <span class="fw-lighter fst-italic text-secondary">* Information about vertices with the Identification (id), Description (label) and Type (type) fields and other properties.</span>
+                                    </div>
+                                </div>                        
+                                <div class="mt-3 ms-3 p-0 row">
+                                    <label for="edgesTable" class="col-form-label ps-0">1.4. Edges Table</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="edgesTable"></select>
+                                        <span class="fw-lighter fst-italic text-secondary">* Information about the edges with the fields Source Identification (src), Destination Identification (dst), Type (type) and other properties.</span>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary mt-3 ms-3" id="btnGetTableDetails">Get tables details</button>
+                            </div>
+                        </div>
+
+                        <p class="my-5"></p>
+
+                        <div class="m-0 p-0" id="groupColumnsSettings" style="display: none;">
+                            <span class="h6">2. Vertices</span>
+                            <hr class="m-0 p-0"/>
+                            <div class="mt-3 ms-3 p-0 row">
+                                <div class="col col-sm-12 col-md-4 ps-0">
+                                    <label for="vertexId" class="col-form-label ps-0">2.1. ID</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="vertexId"></select>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-4 ps-0">
+                                    <label for="vertexLabel" class="col-form-label ps-0">2.2. Label</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="vertexLabel"></select>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-4 ps-0">
+                                    <label for="vertexType" class="col-form-label ps-0">2.3. Type (Optional)</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded"  id="vertexType"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="my-5"></p>
+
+                            <span class="h6">3. Edges</span>
+                            <hr class="m-0 p-0"/>
+                            <div class="mt-3 ms-3 p-0 row">
+                                <div class="col col-sm-12 col-md-4 ps-0">
+                                    <label for="edgeSrc" class="col-form-label ps-0">3.1. Source ID</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded" id="edgeSrc"></select>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-4 ps-0">
+                                    <label for="edgeDst" class="col-form-label ps-0">3.2. Destination ID</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded" id="edgeDst"></select>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-12 col-md-4 ps-0">
+                                    <label for="edgeType" class="col-form-label ps-0">3.3. Type (Optional)</label>
+                                    <div class="ps-0">
+                                        <select class="form-select border border-dark-subtle rounded" id="edgeType"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="my-3"></p>
+
+                            <button type="button" class="btn btn-secondary opacity-50 blocked-click mt-3 ms-3" id="btnApplyVerticesEdgesColumnsSettings">Apply Columns Settings</button>
+                        </div>
+
+                        <p class="my-5"></p>
+
+                        <div class="m-0 p-0" id="groupIconsColorsVerticesEdges" style="display: none;">
+                            <span class="h6">4. Vertices - Icons & Colors</span>
+                            <hr class="m-0 p-0"/>
+                            <div class="mt-4 ms-3 p-0" id="verticeTypesSettings">
+                            </div>
+                            
+                            <p class="my-5"></p>
+
+                            <span class="h6">5. Edges - Colors</span>
+                            <hr class="m-0 p-0"/>
+                            <div class="mt-4 ms-3 p-0" id="edgeTypesSettings">
+                            </div>
+
+                            <p class="my-5"></p>
+
+                            <span class="h6">6. Filters on Source Tables</span>
+                            <hr class="m-0 p-0"/>
+                            <div class="mt-4 ms-3 p-0" id="svgSettings">                                
+                                <div class="row mb-3">
+                                    <label for="datasource-filter-vertex" class="col-3 col-form-label">6.1. Vertex Filter</label>
+                                    <div class="col">
+                                        <div class="input-group mb-3 border border-dark-subtle rounded">
+                                            <input id="datasource-filter-vertex" type="text" class="form-control font-monospace" maxlength="2048" aria-label="Vertex Filter" style="font-size:0.80rem;">
+                                            <button class="btn btn-outline-secondary dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-circle-user"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end scrollable-list datasource-filter-vertex-column-tool"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="datasource-filter-edge" class="col-3 col-form-label">6.2. Edge Filter</label>
+                                    <div class="col">
+                                        <div class="input-group mb-3 border border-dark-subtle rounded">
+                                            <input id="datasource-filter-edge" type="text" class="form-control font-monospace" maxlength="2048" aria-label="Edge Filter" style="font-size:0.80rem;">
+                                            <button class="btn btn-outline-secondary dropdown-toggle border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-arrow-up-long" style="transform: rotate(45deg);"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end scrollable-list datasource-filter-edge-column-tool"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="datasource-filter-edge" class="col-3 col-form-label fst-italic small opacity-50">Attention</label>
+                                    <div class="col">
+                                        <span class="fst-italic small opacity-50">* The filters on vertices and edges will be applied to all datasets.</span>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <p class="my-5"></p>
+
+                            <span class="h6">7. SVG Visualization Settings</span>
+                            <hr class="m-0 p-0"/>
+                            <div class="mt-4 ms-3 p-0" id="svgSettings">
+                                <div class="row mb-3">
+                                    <label for="svgWidth" class="col-3 col-form-label">7.1. Width</label>
+                                    <div class="col-auto">
+                                        <input id="svgWidth" type="number" class="form-control border border-dark-subtle rounded" min="800" max="3200" step="50" value="2400" style="width: 100px;">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="svgHeight" class="col-3 col-form-label">7.2. Height</label>
+                                    <div class="col-auto">
+                                        <input id="svgHeight" type="number" class="form-control border border-dark-subtle rounded" min="600" max="2400" step="50" value="1800" style="width: 100px;">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="svgVertexRadius" class="col-3 col-form-label">7.3 Vertex Size</label>
+                                    <div class="col-auto">
+                                        <input id="svgVertexRadius" type="number" class="form-control border border-dark-subtle rounded" min="24" max="48" step="1" value="30" style="width: 100px;">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="svgVerticesDistance" class="col-3 col-form-label">7.4 Min Vertex Distance</label>
+                                    <div class="col-auto">
+                                        <input id="svgVerticesDistance" type="number" class="form-control border border-dark-subtle rounded" min="60" max="120" step="5" value="75" style="width: 100px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="my-3"></p>
+
+                            <button type="button" class="btn btn-secondary opacity-50 blocked-click mt-3 ms-3" id="btnApplyVerticesEdgesTypesSettings">Apply Vertices and Edges Settings</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- \ Conteúdo -->
+        </div>
+    </main>
+    <!-- \ corpo da página -->
+
+</body>
+
+<script type="module">
+
+    /**
+     * @fileoverview Application entry point. 
+     * Instantiates the global AppSparkGraph and starts the UI.
+     */
+
+    import AppSparkGraphClass from './static/app.js';
+
+    // Create the global instance
+    // This runs the constructor and sets up 'this.Data', 'this.Selected', etc.
+    const AppSparkGraph = new AppSparkGraphClass();
+
+    // Export or set to window if you need access in legacy scripts
+    window.AppSparkGraph = AppSparkGraph;     
+
+    $(document).ready(function() {
+        /**
+         * Bootstrap Tooltip Initialization.
+         * Enables interactive tooltips for all elements with the 'data-bs-toggle' attribute.
+         */
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
+
+        // --- Sidebar Navigation Events ---
+
+        /**
+         * Event listener for creating a new Graph Notebook.
+         * Triggers a full reset of the current project state.
+         */
+        $("#sidebar-btn-new-graph-notebook").on("click", () => {
+            AppSparkGraph.MainPage.newGraphNotebook();
+        });
+
+        /**
+         * Event listener for saving the current Graph Notebook.
+         * Validates and persists the current state into a JSON file.
+         */
+        $("#sidebar-btn-save-graph-notebook").on("click", () => {
+            AppSparkGraph.MainPage.fileSaveGraphNotebook();
+        });
+
+        /**
+         * Event listener for opening an existing Graph Notebook.
+         * Loads a JSON file and rehydrates the application state.
+         */
+        $("#sidebar-btn-open-graph-notebook").on("click", () => {
+            AppSparkGraph.MainPage.fileReadGraphNotebook();
+        });
+
+        /**
+         * Event listener for creating a new Motif Find query tab.
+         * Adds a search interface to the main workspace.
+         */
+        $("#hexagon-nodessidebar-btn-graph-motif-find").on("click", () => {
+            AppSparkGraph.MainPage.motifFindTab();
+        });
+
+        /**
+         * Event listener for creating a new All Paths query tab.
+         * Adds a search interface to the main workspace.
+         */
+        $("#sidebar-btn-graph-all-path").on("click", () => {
+            AppSparkGraph.MainPage.pathsTab("allpaths");
+        });
+
+        /**
+         * Event listener for creating a new Shortest Path query tab.
+         * Adds a search interface to the main workspace.
+         */
+        $("#sidebar-btn-graph-shortest-path").on("click", () => {
+            AppSparkGraph.MainPage.pathsTab("shortestpath");
+        });
+
+        /**
+         * Event listener for creating a new Triangulation query tab.
+         * Adds a search interface to the main workspace.
+         */
+        $("#sidebar-btn-graph-vertex-triangulation").on("click", () => {
+            AppSparkGraph.MainPage.triangulationTab("shortestpath");
+        });
+
+        // --- Initial Application Load ---
+
+        /**
+         * Triggers the initial catalog metadata fetch from the server.
+         */
+        AppSparkGraph.MainPage.loadCatalog();
+    });
+
+
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+FROM spark:4.0.1-python3
+
+
+# Set user and temporary home directory for package installations
+USER root
+
+
+# This avoids repetitive downloads via 'spark.jars.packages'.
+ADD https://repo1.maven.org /opt/spark/jars/
+
+
+# Delta files
+RUN curl -o /opt/spark/jars/delta-spark_2.13-4.0.1.jar https://repo1.maven.org \
+    && curl -o /opt/spark/jars/delta-storage-4.0.1.jar https://repo1.maven.org \
+    && curl -o /opt/spark/jars/antlr4-runtime-4.9.3.jar https://repo1.maven.org
+
+
+# Grant permissions to the spark user
+RUN chmod 644 /opt/spark/jars/*.jar
+
+
+# Copy the Spark configuration file
+COPY ./spark-defaults/spark-defaults.conf /opt/spark/conf/spark-defaults.conf
+
+
+# Set the working directory inside the container
+WORKDIR /opt/spark/work-dir

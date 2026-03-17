@@ -1,0 +1,3416 @@
+{
+  "Data": {
+    "catalog": {
+      "spark_catalog": {
+        "default": [
+          "bank_transfers",
+          "bank_users",
+          "nytaxi_trips",
+          "nytaxi_trips_ext",
+          "nytaxi_zone"
+        ]
+      }
+    },
+    "vertices_statistics": {
+      "Corrente": 99930,
+      "Digital": 99931,
+      "Poupança": 100009,
+      "Salário": 100111
+    },
+    "vertices_table": {
+      "spark_catalog.default.bank_users": [
+        "account_type",
+        "birth_born",
+        "city",
+        "gender",
+        "name",
+        "region_id",
+        "state",
+        "user_id"
+      ]
+    },
+    "edges_statistics": {
+      "DEPÓSITO": 454751,
+      "DOC": 273244,
+      "PIX": 907760,
+      "TED": 364241
+    },
+    "edges_table": {
+      "spark_catalog.default.bank_transfers": [
+        "date",
+        "dst_user_id",
+        "op_id",
+        "src_user_id",
+        "type",
+        "value"
+      ]
+    },
+    "filters": {}
+  },
+  "Selected": {
+    "catalog": "spark_catalog",
+    "schema": "spark_catalog.default",
+    "vertices_table": "spark_catalog.default.bank_users",
+    "edges_table": "spark_catalog.default.bank_transfers",
+    "vertex_fields": {
+      "id": "user_id",
+      "label": "name",
+      "type": "account_type"
+    },
+    "vertices_types": {
+      "Corrente": {
+        "icon": "fas fa-building-columns",
+        "color": "#df0000"
+      },
+      "Digital": {
+        "icon": "fas fa-mobile-screen-button",
+        "color": "#009f00"
+      },
+      "Poupança": {
+        "icon": "fas fa-piggy-bank",
+        "color": "#0000ff"
+      },
+      "Salário": {
+        "icon": "fas fa-money-bill-1-wave",
+        "color": "#ff00ff"
+      }
+    },
+    "edge_fields": {
+      "src": "src_user_id",
+      "dst": "dst_user_id",
+      "type": "type"
+    },
+    "edges_types": {
+      "DEPÓSITO": {
+        "color": "#7f7f7f"
+      },
+      "DOC": {
+        "color": "#7f7f7f"
+      },
+      "PIX": {
+        "color": "#d82222"
+      },
+      "TED": {
+        "color": "#7f7f7f"
+      }
+    },
+    "svg_settings": {
+      "width": 2400,
+      "height": 1800,
+      "vertex_size": 30,
+      "min_vertex_distance": 75
+    }
+  },
+  "Queries": {
+    "1": {
+      "type": "motiffind",
+      "motif": "(v1)-[e1]->(v2)",
+      "filter": "v1.user_id <= 5",
+      "result": {
+        "vertices": [
+          {
+            "user_id": 170110,
+            "name": "Tomé Lorenzini Zanotti Johannesen",
+            "birth_born": "1989-06-06",
+            "gender": "M",
+            "region_id": 3155108,
+            "city": "Rio do Prado",
+            "state": "MG",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 281834,
+            "name": "Albano D'Agostini Reis Moniz",
+            "birth_born": "1972-09-19",
+            "gender": "M",
+            "region_id": 2111672,
+            "city": "São Roberto",
+            "state": "MA",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 122180,
+            "name": "Becky Acátolli Sandrini Kiepper",
+            "birth_born": "2003-03-27",
+            "gender": "F",
+            "region_id": 1504950,
+            "city": "Nova Esperança do Piriá",
+            "state": "PA",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 1,
+            "name": "Rex Guarnier Faria Pegovaro Baro",
+            "birth_born": "1966-09-19",
+            "gender": "M",
+            "region_id": 4125209,
+            "city": "São Jorge d'Oeste",
+            "state": "PR",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 8762,
+            "name": "Cleia Battagnoli Marochio Albani Pereyra",
+            "birth_born": "1988-01-13",
+            "gender": "F",
+            "region_id": 1101492,
+            "city": "São Francisco do Guaporé",
+            "state": "RO",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 5,
+            "name": "Fidélia Grasseto Terossi Palermo Martas",
+            "birth_born": "1992-01-03",
+            "gender": "F",
+            "region_id": 1721208,
+            "city": "Tocantinópolis",
+            "state": "TO",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 263454,
+            "name": "Alden Ceccon Dalsiza Sartório",
+            "birth_born": "1991-10-10",
+            "gender": "M",
+            "region_id": 2205573,
+            "city": "Lagoa de São Francisco",
+            "state": "PI",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 146431,
+            "name": "Alfonso Lubiana Bertone",
+            "birth_born": "2004-07-07",
+            "gender": "M",
+            "region_id": 1702109,
+            "city": "Araguaína",
+            "state": "TO",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 3,
+            "name": "Wells Feitoza Kristensen Congo Gargan",
+            "birth_born": "1949-10-11",
+            "gender": "M",
+            "region_id": 1301308,
+            "city": "Codajás",
+            "state": "AM",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 211226,
+            "name": "Eduarda Benedetti Loura Duar",
+            "birth_born": "1961-10-25",
+            "gender": "F",
+            "region_id": 2208809,
+            "city": "Regeneração",
+            "state": "PI",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 249468,
+            "name": "Rosângela Jonsson Cunshnir Borghi",
+            "birth_born": "1997-04-03",
+            "gender": "F",
+            "region_id": 2609600,
+            "city": "Olinda",
+            "state": "PE",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 366814,
+            "name": "Candelária Morais Favoreto Beltrame",
+            "birth_born": "2001-01-06",
+            "gender": "F",
+            "region_id": 3534401,
+            "city": "Osasco",
+            "state": "SP",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 53709,
+            "name": "Sacha Hansen Loura Piassarolli Chies",
+            "birth_born": "1970-03-15",
+            "gender": "F",
+            "region_id": 5300108,
+            "city": "Brasília",
+            "state": "DF",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 56171,
+            "name": "Taciana Ragazzo Pino",
+            "birth_born": "1996-06-12",
+            "gender": "F",
+            "region_id": 2611606,
+            "city": "Recife",
+            "state": "PE",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 263978,
+            "name": "Cassiano Quinelato Marta",
+            "birth_born": "2007-08-24",
+            "gender": "M",
+            "region_id": 1703701,
+            "city": "Brejinho de Nazaré",
+            "state": "TO",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 2,
+            "name": "Cândida Pagot Barrazzuol Pedrosa Delai",
+            "birth_born": "1969-09-09",
+            "gender": "F",
+            "region_id": 3531407,
+            "city": "Monte Aprazível",
+            "state": "SP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 237742,
+            "name": "Chiara Cota Tomasi Fileti",
+            "birth_born": "1989-02-10",
+            "gender": "F",
+            "region_id": 3304557,
+            "city": "Rio de Janeiro",
+            "state": "RJ",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 130931,
+            "name": "Jarbas Lorenção Fiorido Espírito Barcellos",
+            "birth_born": "1954-11-23",
+            "gender": "M",
+            "region_id": 3505609,
+            "city": "Barrinha",
+            "state": "SP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 321035,
+            "name": "Romário Ferraco Oliveira",
+            "birth_born": "1949-11-28",
+            "gender": "M",
+            "region_id": 3300936,
+            "city": "Carapebus",
+            "state": "RJ",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 286563,
+            "name": "Rudolfo Spagnolo Loureiro Kristiansen Gosepi",
+            "birth_born": "1994-08-16",
+            "gender": "M",
+            "region_id": 1501303,
+            "city": "Barcarena",
+            "state": "PA",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 193322,
+            "name": "Lucélia Sales Gosepi",
+            "birth_born": "1953-08-15",
+            "gender": "F",
+            "region_id": 3130606,
+            "city": "Inconfidentes",
+            "state": "MG",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 4,
+            "name": "Darcy Maroto Vetorazzi Valle",
+            "birth_born": "1999-12-24",
+            "gender": "F",
+            "region_id": 2608750,
+            "city": "Lagoa Grande",
+            "state": "PE",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 36142,
+            "name": "Lineu Panhoca Gavina Marochio",
+            "birth_born": "1966-11-28",
+            "gender": "M",
+            "region_id": 3157807,
+            "city": "Santa Luzia",
+            "state": "MG",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 264041,
+            "name": "Hebe Piovezan Pires Bragato Stein",
+            "birth_born": "1971-08-13",
+            "gender": "F",
+            "region_id": 4307005,
+            "city": "Erechim",
+            "state": "RS",
+            "account_type": "Salário"
+          }
+        ],
+        "edges": [
+          {
+            "op_id": 1529812,
+            "date": "2024-11-29",
+            "type": "PIX",
+            "value": 1733.36,
+            "src_user_id": 2,
+            "dst_user_id": 130931
+          },
+          {
+            "op_id": 1593606,
+            "date": "2025-01-26",
+            "type": "TED",
+            "value": 619.35,
+            "src_user_id": 3,
+            "dst_user_id": 263978
+          },
+          {
+            "op_id": 1606659,
+            "date": "2025-02-07",
+            "type": "DEPÓSITO",
+            "value": 2400.85,
+            "src_user_id": 5,
+            "dst_user_id": 286563
+          },
+          {
+            "op_id": 1633156,
+            "date": "2025-03-03",
+            "type": "PIX",
+            "value": 3541.7,
+            "src_user_id": 1,
+            "dst_user_id": 170110
+          },
+          {
+            "op_id": 1006593,
+            "date": "2023-08-09",
+            "type": "PIX",
+            "value": 373.38,
+            "src_user_id": 4,
+            "dst_user_id": 281834
+          },
+          {
+            "op_id": 1138689,
+            "date": "2023-12-07",
+            "type": "DEPÓSITO",
+            "value": 4502.94,
+            "src_user_id": 4,
+            "dst_user_id": 146431
+          },
+          {
+            "op_id": 883605,
+            "date": "2023-04-19",
+            "type": "PIX",
+            "value": 2593.29,
+            "src_user_id": 2,
+            "dst_user_id": 193322
+          },
+          {
+            "op_id": 458295,
+            "date": "2022-03-27",
+            "type": "PIX",
+            "value": 3043.43,
+            "src_user_id": 2,
+            "dst_user_id": 122180
+          },
+          {
+            "op_id": 87882,
+            "date": "2021-04-23",
+            "type": "PIX",
+            "value": 91.06,
+            "src_user_id": 3,
+            "dst_user_id": 56171
+          },
+          {
+            "op_id": 94469,
+            "date": "2021-04-29",
+            "type": "TED",
+            "value": 3726.52,
+            "src_user_id": 4,
+            "dst_user_id": 237742
+          },
+          {
+            "op_id": 98448,
+            "date": "2021-05-02",
+            "type": "DEPÓSITO",
+            "value": 2928.31,
+            "src_user_id": 5,
+            "dst_user_id": 263454
+          },
+          {
+            "op_id": 149316,
+            "date": "2021-06-18",
+            "type": "PIX",
+            "value": 1125.07,
+            "src_user_id": 4,
+            "dst_user_id": 321035
+          },
+          {
+            "op_id": 1247026,
+            "date": "2024-03-15",
+            "type": "TED",
+            "value": 2182.57,
+            "src_user_id": 5,
+            "dst_user_id": 36142
+          },
+          {
+            "op_id": 1743037,
+            "date": "2025-06-11",
+            "type": "PIX",
+            "value": 2231.05,
+            "src_user_id": 3,
+            "dst_user_id": 211226
+          },
+          {
+            "op_id": 1779429,
+            "date": "2025-07-15",
+            "type": "PIX",
+            "value": 4597.3,
+            "src_user_id": 5,
+            "dst_user_id": 53709
+          },
+          {
+            "op_id": 1829563,
+            "date": "2025-08-29",
+            "type": "TED",
+            "value": 2023.53,
+            "src_user_id": 1,
+            "dst_user_id": 8762
+          },
+          {
+            "op_id": 1882441,
+            "date": "2025-10-16",
+            "type": "DOC",
+            "value": 1411.66,
+            "src_user_id": 2,
+            "dst_user_id": 249468
+          },
+          {
+            "op_id": 1883785,
+            "date": "2025-10-17",
+            "type": "DEPÓSITO",
+            "value": 247.34,
+            "src_user_id": 1,
+            "dst_user_id": 366814
+          },
+          {
+            "op_id": 1902706,
+            "date": "2025-11-04",
+            "type": "DEPÓSITO",
+            "value": 3662.6,
+            "src_user_id": 5,
+            "dst_user_id": 264041
+          }
+        ]
+      }
+    },
+    "2": {
+      "type": "motiffind",
+      "motif": "(v1)-[e1]->(v2) ; (v2)-[e2]->(v3) ; (v3)-[e3]->(v4) ; (v4)-[e4]->(v5)",
+      "filter": "v1.user_id in (5960, 7347)\nand \nv1.user_id = v5.user_id",
+      "result": {
+        "vertices": [
+          {
+            "user_id": 288882,
+            "name": "Ânia Celot Alvez Shibuya",
+            "birth_born": "1949-09-14",
+            "gender": "F",
+            "region_id": 3116100,
+            "city": "Chapada do Norte",
+            "state": "MG",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 5960,
+            "name": "Rayane Fraga Mattar Cardozo",
+            "birth_born": "1996-09-15",
+            "gender": "F",
+            "region_id": 2927408,
+            "city": "Salvador",
+            "state": "BA",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 7347,
+            "name": "Quezia Domene Marotto Donati",
+            "birth_born": "1975-11-05",
+            "gender": "F",
+            "region_id": 4118204,
+            "city": "Paranaguá",
+            "state": "PR",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 26893,
+            "name": "Rose Calil Targonato Schael",
+            "birth_born": "1966-07-08",
+            "gender": "F",
+            "region_id": 3552007,
+            "city": "Silveiras",
+            "state": "SP",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 168639,
+            "name": "Carmela Ceotto Peretti Rochite",
+            "birth_born": "1989-12-26",
+            "gender": "F",
+            "region_id": 2918407,
+            "city": "Juazeiro",
+            "state": "BA",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 332694,
+            "name": "Zaira Christ Bjerke Mastrantoni Meneguete",
+            "birth_born": "2005-09-22",
+            "gender": "F",
+            "region_id": 3205200,
+            "city": "Vila Velha",
+            "state": "ES",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 316726,
+            "name": "Damon Roncheti Pacheco Fior Marchetti",
+            "birth_born": "1995-02-03",
+            "gender": "M",
+            "region_id": 3303609,
+            "city": "Paracambi",
+            "state": "RJ",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 44250,
+            "name": "Maíra Valle Moura Gobbato Esposito",
+            "birth_born": "2003-06-02",
+            "gender": "F",
+            "region_id": 3550308,
+            "city": "São Paulo",
+            "state": "SP",
+            "account_type": "Corrente"
+          }
+        ],
+        "edges": [
+          {
+            "op_id": 31395,
+            "date": "2021-03-02",
+            "type": "PIX",
+            "value": 1907.06,
+            "src_user_id": 332694,
+            "dst_user_id": 5960
+          },
+          {
+            "op_id": 180278,
+            "date": "2021-07-16",
+            "type": "DOC",
+            "value": 805.59,
+            "src_user_id": 7347,
+            "dst_user_id": 316726
+          },
+          {
+            "op_id": 1096882,
+            "date": "2023-10-30",
+            "type": "TED",
+            "value": 284.84,
+            "src_user_id": 26893,
+            "dst_user_id": 44250
+          },
+          {
+            "op_id": 1172712,
+            "date": "2024-01-07",
+            "type": "DEPÓSITO",
+            "value": 1235.14,
+            "src_user_id": 316726,
+            "dst_user_id": 26893
+          },
+          {
+            "op_id": 837237,
+            "date": "2023-03-08",
+            "type": "PIX",
+            "value": 1594.07,
+            "src_user_id": 288882,
+            "dst_user_id": 332694
+          },
+          {
+            "op_id": 855324,
+            "date": "2023-03-24",
+            "type": "PIX",
+            "value": 4735.22,
+            "src_user_id": 168639,
+            "dst_user_id": 288882
+          },
+          {
+            "op_id": 919760,
+            "date": "2023-05-21",
+            "type": "DEPÓSITO",
+            "value": 368.65,
+            "src_user_id": 5960,
+            "dst_user_id": 168639
+          },
+          {
+            "op_id": 966150,
+            "date": "2023-07-03",
+            "type": "PIX",
+            "value": 3341.44,
+            "src_user_id": 44250,
+            "dst_user_id": 7347
+          }
+        ]
+      }
+    },
+    "3": {
+      "type": "motiffind",
+      "motif": "(v1)-[e1]->(v2) ; (v2)-[e2]->(v3)",
+      "filter": "v1.user_id = 276088",
+      "result": {
+        "vertices": [
+          {
+            "user_id": 232664,
+            "name": "Talita Brancaglioni Bonilha Lovatti",
+            "birth_born": "1977-06-28",
+            "gender": "F",
+            "region_id": 3106200,
+            "city": "Belo Horizonte",
+            "state": "MG",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 341313,
+            "name": "Luma Weiss Alvarenga Calazans Oliveria",
+            "birth_born": "2006-10-26",
+            "gender": "F",
+            "region_id": 1200401,
+            "city": "Rio Branco",
+            "state": "AC",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 42726,
+            "name": "Adamor Perlatti Alázia Alcantra",
+            "birth_born": "2005-02-02",
+            "gender": "M",
+            "region_id": 1505403,
+            "city": "Ourém",
+            "state": "PA",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 302600,
+            "name": "Agna Cansian Camargo Barazzuol",
+            "birth_born": "1951-02-01",
+            "gender": "F",
+            "region_id": 3304904,
+            "city": "São Gonçalo",
+            "state": "RJ",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 35548,
+            "name": "Maria Esther Plotegher Holliday Congo",
+            "birth_born": "1972-07-10",
+            "gender": "F",
+            "region_id": 4204608,
+            "city": "Criciúma",
+            "state": "SC",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 276088,
+            "name": "Trace Menegardo Calmon Olivença Furtado",
+            "birth_born": "1998-02-05",
+            "gender": "M",
+            "region_id": 3541406,
+            "city": "Presidente Prudente",
+            "state": "SP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 224007,
+            "name": "Liza Palermo Fornazier Pianessoli",
+            "birth_born": "1976-09-05",
+            "gender": "F",
+            "region_id": 3304557,
+            "city": "Rio de Janeiro",
+            "state": "RJ",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 80382,
+            "name": "Adalgiso Baptista Matioz Palma Volponi",
+            "birth_born": "1980-02-03",
+            "gender": "M",
+            "region_id": 2700409,
+            "city": "Atalaia",
+            "state": "AL",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 346368,
+            "name": "Consuelo Cyrillo Zanellato",
+            "birth_born": "1979-11-24",
+            "gender": "F",
+            "region_id": 2706406,
+            "city": "Pão de Açúcar",
+            "state": "AL",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 211456,
+            "name": "Mário Pagoto Shael Cassaro Aiette",
+            "birth_born": "1959-04-30",
+            "gender": "M",
+            "region_id": 3129806,
+            "city": "Ibirité",
+            "state": "MG",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 149281,
+            "name": "Valência Zanellato Faroni",
+            "birth_born": "1985-05-08",
+            "gender": "F",
+            "region_id": 1703800,
+            "city": "Buriti do Tocantins",
+            "state": "TO",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 131240,
+            "name": "Lucília Barroso Molinaroli Viebrantz Delarmelina",
+            "birth_born": "1974-12-13",
+            "gender": "F",
+            "region_id": 2611606,
+            "city": "Recife",
+            "state": "PE",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 128968,
+            "name": "Livânia Roza Marinho Esméria",
+            "birth_born": "2007-08-24",
+            "gender": "F",
+            "region_id": 2208700,
+            "city": "Redenção do Gurgueia",
+            "state": "PI",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 48804,
+            "name": "Louise Scotte Meira Piazzarollo Orletti",
+            "birth_born": "1950-06-04",
+            "gender": "F",
+            "region_id": 3168804,
+            "city": "Tiradentes",
+            "state": "MG",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 28526,
+            "name": "Jasmin Ockerman Rangel Parente",
+            "birth_born": "1993-08-13",
+            "gender": "F",
+            "region_id": 4310504,
+            "city": "Iraí",
+            "state": "RS",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 274088,
+            "name": "Artemisa Ferro Ostiguy",
+            "birth_born": "1967-07-25",
+            "gender": "F",
+            "region_id": 2912509,
+            "city": "Ibipitanga",
+            "state": "BA",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 169730,
+            "name": "Mirella McCune Ambrozim Soave Moschon",
+            "birth_born": "1960-03-25",
+            "gender": "F",
+            "region_id": 3511300,
+            "city": "Cedral",
+            "state": "SP",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 4413,
+            "name": "Geruza Bertolosso Almada Spadeto",
+            "birth_born": "1999-07-08",
+            "gender": "F",
+            "region_id": 4113700,
+            "city": "Londrina",
+            "state": "PR",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 315740,
+            "name": "Yvette Balliana Gobbi Mamoni",
+            "birth_born": "1988-12-27",
+            "gender": "F",
+            "region_id": 1302603,
+            "city": "Manaus",
+            "state": "AM",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 121740,
+            "name": "Yael Olerdatter Rúbia Cattai Jacomelle",
+            "birth_born": "1983-04-23",
+            "gender": "M",
+            "region_id": 2924306,
+            "city": "Piatã",
+            "state": "BA",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 384331,
+            "name": "Zoey Filho Henrichsen Crozatti",
+            "birth_born": "1992-10-09",
+            "gender": "F",
+            "region_id": 2302008,
+            "city": "Barro",
+            "state": "CE",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 238144,
+            "name": "Jose Scudeler Curbani Christiansen",
+            "birth_born": "1959-09-20",
+            "gender": "M",
+            "region_id": 1500602,
+            "city": "Altamira",
+            "state": "PA",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 247877,
+            "name": "Donovan Collusse Donati Matsuschita",
+            "birth_born": "1977-03-12",
+            "gender": "M",
+            "region_id": 1505486,
+            "city": "Pacajá",
+            "state": "PA",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 282320,
+            "name": "Josélio Calegari Carbonara",
+            "birth_born": "1999-06-20",
+            "gender": "M",
+            "region_id": 2502706,
+            "city": "Borborema",
+            "state": "PB",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 396125,
+            "name": "Lilian Piaz Augustinho Zanichelli Panetto",
+            "birth_born": "1991-10-25",
+            "gender": "F",
+            "region_id": 3524006,
+            "city": "Itupeva",
+            "state": "SP",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 229067,
+            "name": "Priscila Alexandreli Alberico Kristiansen",
+            "birth_born": "1991-11-02",
+            "gender": "F",
+            "region_id": 1600303,
+            "city": "Macapá",
+            "state": "AP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 262317,
+            "name": "Zen Bruneli Fulaneti",
+            "birth_born": "1981-01-10",
+            "gender": "M",
+            "region_id": 4300505,
+            "city": "Alpestre",
+            "state": "RS",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 399010,
+            "name": "Ike Olausdatter Viale Marchiori Siqueira",
+            "birth_born": "1963-11-02",
+            "gender": "M",
+            "region_id": 3514924,
+            "city": "Elisiário",
+            "state": "SP",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 318100,
+            "name": "Armani Zanetti Pandini Casaro",
+            "birth_born": "1979-12-04",
+            "gender": "M",
+            "region_id": 2102325,
+            "city": "Buriticupu",
+            "state": "MA",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 62486,
+            "name": "Brian Dalvi Jordão Langrin Turbian",
+            "birth_born": "1984-08-17",
+            "gender": "M",
+            "region_id": 3146008,
+            "city": "Ouro Fino",
+            "state": "MG",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 265317,
+            "name": "Manuella Trindade Schioter Barrazuol",
+            "birth_born": "1968-09-01",
+            "gender": "F",
+            "region_id": 3534401,
+            "city": "Osasco",
+            "state": "SP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 76020,
+            "name": "Donald Segrini Rigone Dalvin Marotto",
+            "birth_born": "2004-05-18",
+            "gender": "M",
+            "region_id": 3303401,
+            "city": "Nova Friburgo",
+            "state": "RJ",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 25265,
+            "name": "Leandra Antonia Aveleda",
+            "birth_born": "1991-04-04",
+            "gender": "F",
+            "region_id": 3525607,
+            "city": "João Ramalho",
+            "state": "SP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 278040,
+            "name": "Alfonso Granzotto Gasparotto",
+            "birth_born": "1980-09-25",
+            "gender": "M",
+            "region_id": 1503093,
+            "city": "Goianésia do Pará",
+            "state": "PA",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 108403,
+            "name": "Zakai Matsuschita Belinato Aiette",
+            "birth_born": "1992-08-03",
+            "gender": "M",
+            "region_id": 1502103,
+            "city": "Cametá",
+            "state": "PA",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 75121,
+            "name": "Kaline Airoso Dalla",
+            "birth_born": "1988-12-10",
+            "gender": "F",
+            "region_id": 3549904,
+            "city": "São José dos Campos",
+            "state": "SP",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 82709,
+            "name": "Edwin Marcarini Stelzer Lorezon Caretta",
+            "birth_born": "2007-06-09",
+            "gender": "M",
+            "region_id": 5103353,
+            "city": "Confresa",
+            "state": "MT",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 319780,
+            "name": "Cícero Ockerman Casagrande",
+            "birth_born": "1989-08-12",
+            "gender": "M",
+            "region_id": 4105508,
+            "city": "Cianorte",
+            "state": "PR",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 70868,
+            "name": "Bérnia Resende Andrade Rodriques Evarti",
+            "birth_born": "1971-02-19",
+            "gender": "F",
+            "region_id": 3550308,
+            "city": "São Paulo",
+            "state": "SP",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 116592,
+            "name": "Blandina Rigo Cenedesi",
+            "birth_born": "1953-03-20",
+            "gender": "F",
+            "region_id": 2610509,
+            "city": "Passira",
+            "state": "PE",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 345471,
+            "name": "Catalina Espinosa Mengale Provendel",
+            "birth_born": "1982-04-14",
+            "gender": "F",
+            "region_id": 2801306,
+            "city": "Capela",
+            "state": "SE",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 128356,
+            "name": "Alaíde Toneto Bozzi Bernabé Bazoni",
+            "birth_born": "1952-10-18",
+            "gender": "F",
+            "region_id": 3548708,
+            "city": "São Bernardo do Campo",
+            "state": "SP",
+            "account_type": "Salário"
+          }
+        ],
+        "edges": [
+          {
+            "op_id": 20218,
+            "date": "2021-02-20",
+            "type": "PIX",
+            "value": 2462.43,
+            "src_user_id": 116592,
+            "dst_user_id": 282320
+          },
+          {
+            "op_id": 46145,
+            "date": "2021-03-15",
+            "type": "PIX",
+            "value": 2435.38,
+            "src_user_id": 341313,
+            "dst_user_id": 238144
+          },
+          {
+            "op_id": 58237,
+            "date": "2021-03-27",
+            "type": "TED",
+            "value": 56.56,
+            "src_user_id": 211456,
+            "dst_user_id": 247877
+          },
+          {
+            "op_id": 73508,
+            "date": "2021-04-09",
+            "type": "DOC",
+            "value": 4893.47,
+            "src_user_id": 341313,
+            "dst_user_id": 396125
+          },
+          {
+            "op_id": 525285,
+            "date": "2022-05-27",
+            "type": "DOC",
+            "value": 278.84,
+            "src_user_id": 276088,
+            "dst_user_id": 315740
+          },
+          {
+            "op_id": 579548,
+            "date": "2022-07-15",
+            "type": "PIX",
+            "value": 690.44,
+            "src_user_id": 169730,
+            "dst_user_id": 345471
+          },
+          {
+            "op_id": 733136,
+            "date": "2022-12-03",
+            "type": "PIX",
+            "value": 3964.17,
+            "src_user_id": 341313,
+            "dst_user_id": 75121
+          },
+          {
+            "op_id": 1233629,
+            "date": "2024-03-03",
+            "type": "TED",
+            "value": 3910.25,
+            "src_user_id": 341313,
+            "dst_user_id": 48804
+          },
+          {
+            "op_id": 1235173,
+            "date": "2024-03-05",
+            "type": "DEPÓSITO",
+            "value": 3038.52,
+            "src_user_id": 169730,
+            "dst_user_id": 302600
+          },
+          {
+            "op_id": 1251715,
+            "date": "2024-03-20",
+            "type": "PIX",
+            "value": 1563.66,
+            "src_user_id": 35548,
+            "dst_user_id": 28526
+          },
+          {
+            "op_id": 1350059,
+            "date": "2024-06-17",
+            "type": "DEPÓSITO",
+            "value": 15.73,
+            "src_user_id": 276088,
+            "dst_user_id": 169730
+          },
+          {
+            "op_id": 1359095,
+            "date": "2024-06-26",
+            "type": "PIX",
+            "value": 72.09,
+            "src_user_id": 35548,
+            "dst_user_id": 274088
+          },
+          {
+            "op_id": 1359354,
+            "date": "2024-06-26",
+            "type": "DOC",
+            "value": 2352.51,
+            "src_user_id": 116592,
+            "dst_user_id": 121740
+          },
+          {
+            "op_id": 1424715,
+            "date": "2024-08-25",
+            "type": "PIX",
+            "value": 4963.57,
+            "src_user_id": 341313,
+            "dst_user_id": 108403
+          },
+          {
+            "op_id": 1726501,
+            "date": "2025-05-27",
+            "type": "PIX",
+            "value": 606.41,
+            "src_user_id": 116592,
+            "dst_user_id": 131240
+          },
+          {
+            "op_id": 1759807,
+            "date": "2025-06-27",
+            "type": "DOC",
+            "value": 2373.04,
+            "src_user_id": 276088,
+            "dst_user_id": 116592
+          },
+          {
+            "op_id": 1792449,
+            "date": "2025-07-27",
+            "type": "PIX",
+            "value": 1058.22,
+            "src_user_id": 341313,
+            "dst_user_id": 82709
+          },
+          {
+            "op_id": 1864534,
+            "date": "2025-09-30",
+            "type": "TED",
+            "value": 4481.02,
+            "src_user_id": 35548,
+            "dst_user_id": 70868
+          },
+          {
+            "op_id": 1939131,
+            "date": "2025-12-07",
+            "type": "PIX",
+            "value": 1054,
+            "src_user_id": 116592,
+            "dst_user_id": 42726
+          },
+          {
+            "op_id": 1942111,
+            "date": "2025-12-10",
+            "type": "DEPÓSITO",
+            "value": 4903.38,
+            "src_user_id": 169730,
+            "dst_user_id": 346368
+          },
+          {
+            "op_id": 1968290,
+            "date": "2026-01-02",
+            "type": "DEPÓSITO",
+            "value": 4352.93,
+            "src_user_id": 276088,
+            "dst_user_id": 211456
+          },
+          {
+            "op_id": 1983125,
+            "date": "2026-01-16",
+            "type": "PIX",
+            "value": 3910.66,
+            "src_user_id": 276088,
+            "dst_user_id": 341313
+          },
+          {
+            "op_id": 1478156,
+            "date": "2024-10-13",
+            "type": "DEPÓSITO",
+            "value": 2293.28,
+            "src_user_id": 315740,
+            "dst_user_id": 80382
+          },
+          {
+            "op_id": 1479964,
+            "date": "2024-10-14",
+            "type": "DOC",
+            "value": 351.71,
+            "src_user_id": 211456,
+            "dst_user_id": 229067
+          },
+          {
+            "op_id": 1605248,
+            "date": "2025-02-06",
+            "type": "PIX",
+            "value": 829.1,
+            "src_user_id": 315740,
+            "dst_user_id": 232664
+          },
+          {
+            "op_id": 1609780,
+            "date": "2025-02-10",
+            "type": "DEPÓSITO",
+            "value": 526.66,
+            "src_user_id": 341313,
+            "dst_user_id": 224007
+          },
+          {
+            "op_id": 1067978,
+            "date": "2023-10-03",
+            "type": "PIX",
+            "value": 1386.77,
+            "src_user_id": 169730,
+            "dst_user_id": 149281
+          },
+          {
+            "op_id": 1104188,
+            "date": "2023-11-06",
+            "type": "DEPÓSITO",
+            "value": 3360.04,
+            "src_user_id": 315740,
+            "dst_user_id": 62486
+          },
+          {
+            "op_id": 1136977,
+            "date": "2023-12-05",
+            "type": "DEPÓSITO",
+            "value": 2536.64,
+            "src_user_id": 116592,
+            "dst_user_id": 399010
+          },
+          {
+            "op_id": 1137227,
+            "date": "2023-12-06",
+            "type": "DEPÓSITO",
+            "value": 3325.91,
+            "src_user_id": 341313,
+            "dst_user_id": 4413
+          },
+          {
+            "op_id": 1189842,
+            "date": "2024-01-23",
+            "type": "PIX",
+            "value": 421.49,
+            "src_user_id": 169730,
+            "dst_user_id": 265317
+          },
+          {
+            "op_id": 1194053,
+            "date": "2024-01-27",
+            "type": "PIX",
+            "value": 4060.34,
+            "src_user_id": 211456,
+            "dst_user_id": 25265
+          },
+          {
+            "op_id": 1210736,
+            "date": "2024-02-11",
+            "type": "TED",
+            "value": 521.34,
+            "src_user_id": 341313,
+            "dst_user_id": 128356
+          },
+          {
+            "op_id": 1223269,
+            "date": "2024-02-23",
+            "type": "DEPÓSITO",
+            "value": 2409.79,
+            "src_user_id": 341313,
+            "dst_user_id": 76020
+          },
+          {
+            "op_id": 805825,
+            "date": "2023-02-07",
+            "type": "PIX",
+            "value": 907.09,
+            "src_user_id": 169730,
+            "dst_user_id": 318100
+          },
+          {
+            "op_id": 868989,
+            "date": "2023-04-05",
+            "type": "PIX",
+            "value": 1632.36,
+            "src_user_id": 169730,
+            "dst_user_id": 384331
+          },
+          {
+            "op_id": 891821,
+            "date": "2023-04-26",
+            "type": "TED",
+            "value": 4910.02,
+            "src_user_id": 169730,
+            "dst_user_id": 278040
+          },
+          {
+            "op_id": 977544,
+            "date": "2023-07-13",
+            "type": "DEPÓSITO",
+            "value": 876.02,
+            "src_user_id": 169730,
+            "dst_user_id": 128968
+          },
+          {
+            "op_id": 351144,
+            "date": "2021-12-19",
+            "type": "PIX",
+            "value": 1689.69,
+            "src_user_id": 315740,
+            "dst_user_id": 319780
+          },
+          {
+            "op_id": 421028,
+            "date": "2022-02-21",
+            "type": "PIX",
+            "value": 689.61,
+            "src_user_id": 276088,
+            "dst_user_id": 35548
+          },
+          {
+            "op_id": 433010,
+            "date": "2022-03-04",
+            "type": "TED",
+            "value": 2687.8,
+            "src_user_id": 35548,
+            "dst_user_id": 262317
+          }
+        ]
+      }
+    },
+    "4": {
+      "type": "allpaths",
+      "fromExpr": "user_id = 347939",
+      "toExpr": "user_id = 120626",
+      "max_distance": 8,
+      "result": {
+        "vertices": [
+          {
+            "user_id": 219481,
+            "name": "Noa Cambiage Nova Dadalto",
+            "birth_born": "1973-08-23",
+            "gender": "M",
+            "region_id": 3119104,
+            "city": "Corinto",
+            "state": "MG",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 327266,
+            "name": "Isaias Alvez Dutra",
+            "birth_born": "1997-09-07",
+            "gender": "M",
+            "region_id": 2303709,
+            "city": "Caucaia",
+            "state": "CE",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 345053,
+            "name": "Bonnie Magaldi Rúbia Voluzia",
+            "birth_born": "1977-03-22",
+            "gender": "F",
+            "region_id": 4307807,
+            "city": "Estrela",
+            "state": "RS",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 16160,
+            "name": "Teodemiro Morosini Loureiro Fornazier Lozano",
+            "birth_born": "1964-10-13",
+            "gender": "M",
+            "region_id": 5205109,
+            "city": "Catalão",
+            "state": "GO",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 347939,
+            "name": "Alejandra Perin Marin Stelzer",
+            "birth_born": "1957-07-08",
+            "gender": "F",
+            "region_id": 2408508,
+            "city": "Ouro Branco",
+            "state": "RN",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 308596,
+            "name": "Ataíde Bergami Gueberio",
+            "birth_born": "1952-12-08",
+            "gender": "M",
+            "region_id": 3300209,
+            "city": "Araruama",
+            "state": "RJ",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 234004,
+            "name": "Rufino Preato Holliday",
+            "birth_born": "2005-01-31",
+            "gender": "M",
+            "region_id": 3300407,
+            "city": "Barra Mansa",
+            "state": "RJ",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 338386,
+            "name": "Dália Olimpio Razal Constâncio Zanchetta",
+            "birth_born": "1984-02-08",
+            "gender": "F",
+            "region_id": 4119509,
+            "city": "Piraquara",
+            "state": "PR",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 220682,
+            "name": "Carolina Correia Perota Massardi Bernadot",
+            "birth_born": "2005-07-23",
+            "gender": "F",
+            "region_id": 3304557,
+            "city": "Rio de Janeiro",
+            "state": "RJ",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 267217,
+            "name": "Jefferson Langrin Bride Bregolin Marinato",
+            "birth_born": "1960-02-15",
+            "gender": "M",
+            "region_id": 3201209,
+            "city": "Cachoeiro de Itapemirim",
+            "state": "ES",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 123400,
+            "name": "Malvina Bubach Minetti Antonia Kiefer",
+            "birth_born": "1998-06-03",
+            "gender": "F",
+            "region_id": 3522307,
+            "city": "Itapetininga",
+            "state": "SP",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 113153,
+            "name": "Leland Tostes Carniele",
+            "birth_born": "1991-09-19",
+            "gender": "M",
+            "region_id": 2608800,
+            "city": "Lajedo",
+            "state": "PE",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 12311,
+            "name": "Geovani Caldana Barnabe Capelini Cremard",
+            "birth_born": "1997-11-07",
+            "gender": "M",
+            "region_id": 2611606,
+            "city": "Recife",
+            "state": "PE",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 83013,
+            "name": "Pamela Teixeira Mathiasso",
+            "birth_born": "1950-04-08",
+            "gender": "F",
+            "region_id": 4106902,
+            "city": "Curitiba",
+            "state": "PR",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 203388,
+            "name": "Cizina Renzo Rossi Monfardini",
+            "birth_born": "1999-05-18",
+            "gender": "F",
+            "region_id": 2923407,
+            "city": "Palmas de Monte Alto",
+            "state": "BA",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 32103,
+            "name": "Cindy Viebrantz Jorgensen Fileti",
+            "birth_born": "1999-03-01",
+            "gender": "F",
+            "region_id": 3547304,
+            "city": "Santana de Parnaíba",
+            "state": "SP",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 120626,
+            "name": "Cristóvão Mistura Gaiguer Fiorot",
+            "birth_born": "1976-03-18",
+            "gender": "M",
+            "region_id": 2911204,
+            "city": "Gandu",
+            "state": "BA",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 123343,
+            "name": "Cristele Toste Tassinari Mengale Gallina",
+            "birth_born": "1950-04-12",
+            "gender": "F",
+            "region_id": 4209102,
+            "city": "Joinville",
+            "state": "SC",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 234040,
+            "name": "Sérgio Viçosi Tomasi Conti Orletti",
+            "birth_born": "1957-05-12",
+            "gender": "M",
+            "region_id": 5107958,
+            "city": "Tangará da Serra",
+            "state": "MT",
+            "account_type": "Salário"
+          }
+        ],
+        "edges": [
+          {
+            "op_id": 1695596,
+            "date": "2025-04-29",
+            "type": "PIX",
+            "value": 4443.41,
+            "src_user_id": 347939,
+            "dst_user_id": 113153
+          },
+          {
+            "op_id": 1057572,
+            "date": "2023-09-24",
+            "type": "DEPÓSITO",
+            "value": 2478.89,
+            "src_user_id": 327266,
+            "dst_user_id": 308596
+          },
+          {
+            "op_id": 1071613,
+            "date": "2023-10-07",
+            "type": "DEPÓSITO",
+            "value": 3320.1,
+            "src_user_id": 16160,
+            "dst_user_id": 267217
+          },
+          {
+            "op_id": 1113269,
+            "date": "2023-11-14",
+            "type": "PIX",
+            "value": 1539.9,
+            "src_user_id": 203388,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 1148674,
+            "date": "2023-12-16",
+            "type": "PIX",
+            "value": 2993,
+            "src_user_id": 308596,
+            "dst_user_id": 203388
+          },
+          {
+            "op_id": 1197718,
+            "date": "2024-01-30",
+            "type": "DOC",
+            "value": 3831.38,
+            "src_user_id": 219481,
+            "dst_user_id": 32103
+          },
+          {
+            "op_id": 1203011,
+            "date": "2024-02-04",
+            "type": "DEPÓSITO",
+            "value": 3455.92,
+            "src_user_id": 220682,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 910277,
+            "date": "2023-05-13",
+            "type": "PIX",
+            "value": 1148.9,
+            "src_user_id": 345053,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 295364,
+            "date": "2021-10-29",
+            "type": "PIX",
+            "value": 4667.01,
+            "src_user_id": 123343,
+            "dst_user_id": 345053
+          },
+          {
+            "op_id": 395006,
+            "date": "2022-01-28",
+            "type": "TED",
+            "value": 4886.64,
+            "src_user_id": 32103,
+            "dst_user_id": 123343
+          },
+          {
+            "op_id": 457128,
+            "date": "2022-03-26",
+            "type": "TED",
+            "value": 895.74,
+            "src_user_id": 234040,
+            "dst_user_id": 83013
+          },
+          {
+            "op_id": 189962,
+            "date": "2021-07-25",
+            "type": "TED",
+            "value": 1215.29,
+            "src_user_id": 234004,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 191134,
+            "date": "2021-07-26",
+            "type": "PIX",
+            "value": 4949.31,
+            "src_user_id": 338386,
+            "dst_user_id": 327266
+          },
+          {
+            "op_id": 204697,
+            "date": "2021-08-07",
+            "type": "PIX",
+            "value": 3841.97,
+            "src_user_id": 347939,
+            "dst_user_id": 16160
+          },
+          {
+            "op_id": 567462,
+            "date": "2022-07-04",
+            "type": "TED",
+            "value": 600.25,
+            "src_user_id": 123400,
+            "dst_user_id": 338386
+          },
+          {
+            "op_id": 588160,
+            "date": "2022-07-23",
+            "type": "DOC",
+            "value": 4655.9,
+            "src_user_id": 113153,
+            "dst_user_id": 234004
+          },
+          {
+            "op_id": 1260023,
+            "date": "2024-03-27",
+            "type": "PIX",
+            "value": 2292.71,
+            "src_user_id": 234040,
+            "dst_user_id": 220682
+          },
+          {
+            "op_id": 1300117,
+            "date": "2024-05-03",
+            "type": "PIX",
+            "value": 1082.5,
+            "src_user_id": 12311,
+            "dst_user_id": 219481
+          },
+          {
+            "op_id": 1330704,
+            "date": "2024-05-31",
+            "type": "PIX",
+            "value": 4625.74,
+            "src_user_id": 234040,
+            "dst_user_id": 12311
+          },
+          {
+            "op_id": 1740587,
+            "date": "2025-06-09",
+            "type": "DEPÓSITO",
+            "value": 4423.49,
+            "src_user_id": 83013,
+            "dst_user_id": 123400
+          },
+          {
+            "op_id": 1782954,
+            "date": "2025-07-18",
+            "type": "TED",
+            "value": 798.7,
+            "src_user_id": 267217,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 1848028,
+            "date": "2025-09-15",
+            "type": "DOC",
+            "value": 3712.5,
+            "src_user_id": 347939,
+            "dst_user_id": 234040
+          }
+        ]
+      }
+    },
+    "5": {
+      "type": "shortestpath",
+      "fromExpr": "user_id = 347939",
+      "toExpr": "user_id = 120626",
+      "max_distance": 8,
+      "result": {
+        "vertices": [
+          {
+            "user_id": 120626,
+            "name": "Cristóvão Mistura Gaiguer Fiorot",
+            "birth_born": "1976-03-18",
+            "gender": "M",
+            "region_id": 2911204,
+            "city": "Gandu",
+            "state": "BA",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 234040,
+            "name": "Sérgio Viçosi Tomasi Conti Orletti",
+            "birth_born": "1957-05-12",
+            "gender": "M",
+            "region_id": 5107958,
+            "city": "Tangará da Serra",
+            "state": "MT",
+            "account_type": "Salário"
+          },
+          {
+            "user_id": 16160,
+            "name": "Teodemiro Morosini Loureiro Fornazier Lozano",
+            "birth_born": "1964-10-13",
+            "gender": "M",
+            "region_id": 5205109,
+            "city": "Catalão",
+            "state": "GO",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 347939,
+            "name": "Alejandra Perin Marin Stelzer",
+            "birth_born": "1957-07-08",
+            "gender": "F",
+            "region_id": 2408508,
+            "city": "Ouro Branco",
+            "state": "RN",
+            "account_type": "Corrente"
+          },
+          {
+            "user_id": 234004,
+            "name": "Rufino Preato Holliday",
+            "birth_born": "2005-01-31",
+            "gender": "M",
+            "region_id": 3300407,
+            "city": "Barra Mansa",
+            "state": "RJ",
+            "account_type": "Poupança"
+          },
+          {
+            "user_id": 220682,
+            "name": "Carolina Correia Perota Massardi Bernadot",
+            "birth_born": "2005-07-23",
+            "gender": "F",
+            "region_id": 3304557,
+            "city": "Rio de Janeiro",
+            "state": "RJ",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 267217,
+            "name": "Jefferson Langrin Bride Bregolin Marinato",
+            "birth_born": "1960-02-15",
+            "gender": "M",
+            "region_id": 3201209,
+            "city": "Cachoeiro de Itapemirim",
+            "state": "ES",
+            "account_type": "Digital"
+          },
+          {
+            "user_id": 113153,
+            "name": "Leland Tostes Carniele",
+            "birth_born": "1991-09-19",
+            "gender": "M",
+            "region_id": 2608800,
+            "city": "Lajedo",
+            "state": "PE",
+            "account_type": "Salário"
+          }
+        ],
+        "edges": [
+          {
+            "op_id": 189962,
+            "date": "2021-07-25",
+            "type": "TED",
+            "value": 1215.29,
+            "src_user_id": 234004,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 204697,
+            "date": "2021-08-07",
+            "type": "PIX",
+            "value": 3841.97,
+            "src_user_id": 347939,
+            "dst_user_id": 16160
+          },
+          {
+            "op_id": 588160,
+            "date": "2022-07-23",
+            "type": "DOC",
+            "value": 4655.9,
+            "src_user_id": 113153,
+            "dst_user_id": 234004
+          },
+          {
+            "op_id": 1260023,
+            "date": "2024-03-27",
+            "type": "PIX",
+            "value": 2292.71,
+            "src_user_id": 234040,
+            "dst_user_id": 220682
+          },
+          {
+            "op_id": 1782954,
+            "date": "2025-07-18",
+            "type": "TED",
+            "value": 798.7,
+            "src_user_id": 267217,
+            "dst_user_id": 120626
+          },
+          {
+            "op_id": 1848028,
+            "date": "2025-09-15",
+            "type": "DOC",
+            "value": 3712.5,
+            "src_user_id": 347939,
+            "dst_user_id": 234040
+          },
+          {
+            "op_id": 1695596,
+            "date": "2025-04-29",
+            "type": "PIX",
+            "value": 4443.41,
+            "src_user_id": 347939,
+            "dst_user_id": 113153
+          },
+          {
+            "op_id": 1071613,
+            "date": "2023-10-07",
+            "type": "DEPÓSITO",
+            "value": 3320.1,
+            "src_user_id": 16160,
+            "dst_user_id": 267217
+          },
+          {
+            "op_id": 1203011,
+            "date": "2024-02-04",
+            "type": "DEPÓSITO",
+            "value": 3455.92,
+            "src_user_id": 220682,
+            "dst_user_id": 120626
+          }
+        ]
+      }
+    },
+    "6": {
+      "type": "triangulation",
+      "fromExpr": "user_id between 7350 and 7500",
+      "max_distance": 8,
+      "result": {
+        "triangulation": [
+          {
+            "id": 7392,
+            "occurrences": 10,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7392,
+              "name": "Ceres Muscareli Espinola Cunshnir",
+              "birth_born": "1986-07-02",
+              "gender": "F",
+              "region_id": 3129806,
+              "city": "Ibirité",
+              "state": "MG",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7366,
+            "occurrences": 7,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7366,
+              "name": "Letízia Caliman Fioretti Carmo",
+              "birth_born": "1950-07-19",
+              "gender": "F",
+              "region_id": 2101608,
+              "city": "Barra do Corda",
+              "state": "MA",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7499,
+            "occurrences": 6,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7499,
+              "name": "Paul Piai Prata Belinato",
+              "birth_born": "1970-09-09",
+              "gender": "M",
+              "region_id": 2917300,
+              "city": "Ituberá",
+              "state": "BA",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7500,
+            "occurrences": 5,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7500,
+              "name": "Abiel Botteon Klippel Leite",
+              "birth_born": "2001-10-09",
+              "gender": "M",
+              "region_id": 3106200,
+              "city": "Belo Horizonte",
+              "state": "MG",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7396,
+            "occurrences": 5,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7396,
+              "name": "Marisol Pegovaro Toledo Espíndula Maset",
+              "birth_born": "1972-03-23",
+              "gender": "F",
+              "region_id": 3546801,
+              "city": "Santa Isabel",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7439,
+            "occurrences": 5,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7439,
+              "name": "Darian Bernadot Collaço",
+              "birth_born": "1968-09-15",
+              "gender": "M",
+              "region_id": 5200258,
+              "city": "Águas Lindas de Goiás",
+              "state": "GO",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7489,
+            "occurrences": 5,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7489,
+              "name": "Gertrudes Donadelli Magro",
+              "birth_born": "1987-04-08",
+              "gender": "F",
+              "region_id": 2700300,
+              "city": "Arapiraca",
+              "state": "AL",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7484,
+            "occurrences": 4,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7484,
+              "name": "Xerxes Piccin Tessinari",
+              "birth_born": "1949-07-20",
+              "gender": "M",
+              "region_id": 3304557,
+              "city": "Rio de Janeiro",
+              "state": "RJ",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7466,
+            "occurrences": 4,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7466,
+              "name": "Cordélia Scoot Costalonga Magnago Pitanga",
+              "birth_born": "1976-02-10",
+              "gender": "F",
+              "region_id": 2603454,
+              "city": "Camaragibe",
+              "state": "PE",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7471,
+            "occurrences": 4,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7471,
+              "name": "Manuela Varandas Felet Lozano",
+              "birth_born": "1990-02-13",
+              "gender": "F",
+              "region_id": 2205508,
+              "city": "José de Freitas",
+              "state": "PI",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7480,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7480,
+              "name": "Nataniel Carazas Preta Pavan",
+              "birth_born": "1996-12-14",
+              "gender": "M",
+              "region_id": 2507507,
+              "city": "João Pessoa",
+              "state": "PB",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7390,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7390,
+              "name": "Maria Luiza Gardiman Orelio Ciqueira",
+              "birth_born": "1989-01-07",
+              "gender": "F",
+              "region_id": 2111300,
+              "city": "São Luís",
+              "state": "MA",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7490,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7490,
+              "name": "Beckham Barbato Johannesen Sanson",
+              "birth_born": "1985-09-02",
+              "gender": "M",
+              "region_id": 2613503,
+              "city": "São José do Belmonte",
+              "state": "PE",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7386,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7386,
+              "name": "Anthony Noah Zaganelli Iwand",
+              "birth_born": "1972-05-27",
+              "gender": "M",
+              "region_id": 3106200,
+              "city": "Belo Horizonte",
+              "state": "MG",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7456,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7456,
+              "name": "Robin Pariz Nardi",
+              "birth_born": "1951-08-13",
+              "gender": "F",
+              "region_id": 2611606,
+              "city": "Recife",
+              "state": "PE",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7381,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7381,
+              "name": "Cinira Comarela Modesto Stefani",
+              "birth_born": "1990-11-11",
+              "gender": "F",
+              "region_id": 2511707,
+              "city": "Pilõezinhos",
+              "state": "PB",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7401,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7401,
+              "name": "Firmina Gois Especemile Matielo Góes",
+              "birth_born": "1993-09-29",
+              "gender": "F",
+              "region_id": 5208608,
+              "city": "Goianésia",
+              "state": "GO",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7451,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7451,
+              "name": "Huxley Colombi Dariva",
+              "birth_born": "1985-01-20",
+              "gender": "M",
+              "region_id": 3542602,
+              "city": "Registro",
+              "state": "SP",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7459,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7459,
+              "name": "Knox Cunha Bernardes",
+              "birth_born": "1961-05-02",
+              "gender": "M",
+              "region_id": 3541307,
+              "city": "Presidente Epitácio",
+              "state": "SP",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7378,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7378,
+              "name": "Vênus Pilato Rauta",
+              "birth_born": "1977-12-17",
+              "gender": "F",
+              "region_id": 5214507,
+              "city": "Nerópolis",
+              "state": "GO",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7454,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7454,
+              "name": "Nely Meira Pagani",
+              "birth_born": "2006-07-06",
+              "gender": "F",
+              "region_id": 4315602,
+              "city": "Rio Grande",
+              "state": "RS",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7430,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7430,
+              "name": "Leona Girolamo Frade Dariva",
+              "birth_born": "1963-07-11",
+              "gender": "F",
+              "region_id": 3550308,
+              "city": "São Paulo",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7404,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7404,
+              "name": "Rosalba Bassos Rissari Ziviani",
+              "birth_born": "1967-09-27",
+              "gender": "F",
+              "region_id": 3548708,
+              "city": "São Bernardo do Campo",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7476,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7476,
+              "name": "Avery Zancanela Lovatel Gazola Gomes",
+              "birth_born": "2004-07-28",
+              "gender": "M",
+              "region_id": 2704302,
+              "city": "Maceió",
+              "state": "AL",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7413,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7413,
+              "name": "Quinn Curitiba Antunes Melegari",
+              "birth_born": "1999-07-24",
+              "gender": "F",
+              "region_id": 4104253,
+              "city": "Campo Magro",
+              "state": "PR",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7443,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7443,
+              "name": "João Guilherme Monfardini Verret Bortolotti Stein",
+              "birth_born": "1953-03-01",
+              "gender": "M",
+              "region_id": 1505486,
+              "city": "Pacajá",
+              "state": "PA",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7460,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7460,
+              "name": "Helena Bernardi Pazeto",
+              "birth_born": "1955-02-17",
+              "gender": "F",
+              "region_id": 3511201,
+              "city": "Catiguá",
+              "state": "SP",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7492,
+            "occurrences": 3,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7492,
+              "name": "Sandro Mascarelo Ferro Barrazzuol",
+              "birth_born": "1954-06-15",
+              "gender": "M",
+              "region_id": 2516409,
+              "city": "Tacima",
+              "state": "PB",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7407,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7407,
+              "name": "Laith Manhães Saiter Pajot",
+              "birth_born": "2005-08-18",
+              "gender": "M",
+              "region_id": 3161106,
+              "city": "São Francisco",
+              "state": "MG",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7360,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7360,
+              "name": "Dax Calvi Bedard Souza Calatrone",
+              "birth_born": "1984-11-24",
+              "gender": "M",
+              "region_id": 2607901,
+              "city": "Jaboatão dos Guararapes",
+              "state": "PE",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7496,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7496,
+              "name": "Carol Rocha Vasoler Galvão Lerner",
+              "birth_born": "1974-09-02",
+              "gender": "F",
+              "region_id": 3106200,
+              "city": "Belo Horizonte",
+              "state": "MG",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7453,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7453,
+              "name": "Abdiel Espineli Gaigher Sasso Basso",
+              "birth_born": "1959-08-15",
+              "gender": "M",
+              "region_id": 4315073,
+              "city": "Porto Vera Cruz",
+              "state": "RS",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7472,
+            "occurrences": 2,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7472,
+              "name": "Renan Aveleda Strozzi",
+              "birth_born": "1952-10-04",
+              "gender": "M",
+              "region_id": 2600054,
+              "city": "Abreu e Lima",
+              "state": "PE",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7405,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7405,
+              "name": "Azariah Calassara Rugero",
+              "birth_born": "1976-09-26",
+              "gender": "M",
+              "region_id": 3530607,
+              "city": "Mogi das Cruzes",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7436,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7436,
+              "name": "Grace Fornazier Marchetti",
+              "birth_born": "1967-09-06",
+              "gender": "F",
+              "region_id": 2101400,
+              "city": "Balsas",
+              "state": "MA",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7368,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7368,
+              "name": "Zaqueu Sagers Lizabo",
+              "birth_born": "1950-06-30",
+              "gender": "M",
+              "region_id": 3106200,
+              "city": "Belo Horizonte",
+              "state": "MG",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7427,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7427,
+              "name": "Reed Catabriga Medeiros",
+              "birth_born": "1985-11-22",
+              "gender": "M",
+              "region_id": 3552403,
+              "city": "Sumaré",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7402,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7402,
+              "name": "Myriam Pegorer Bernabé Rezende",
+              "birth_born": "1978-09-04",
+              "gender": "F",
+              "region_id": 3552809,
+              "city": "Taboão da Serra",
+              "state": "SP",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7400,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7400,
+              "name": "Xiomara Paiva Camata Fardin Spadetto",
+              "birth_born": "1993-04-28",
+              "gender": "F",
+              "region_id": 1500909,
+              "city": "Augusto Corrêa",
+              "state": "PA",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7463,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7463,
+              "name": "Franco Ramos Pereira Granzottin",
+              "birth_born": "1985-04-22",
+              "gender": "M",
+              "region_id": 4304630,
+              "city": "Capão da Canoa",
+              "state": "RS",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7414,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7414,
+              "name": "Kase Moresco Moro",
+              "birth_born": "1983-04-16",
+              "gender": "M",
+              "region_id": 4318309,
+              "city": "São Gabriel",
+              "state": "RS",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7442,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7442,
+              "name": "Brunilde Lovatel Zancanela Fabis",
+              "birth_born": "1973-10-15",
+              "gender": "F",
+              "region_id": 2307007,
+              "city": "Jaguaruana",
+              "state": "CE",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7416,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7416,
+              "name": "Corália Olivera Possebon Carminati",
+              "birth_born": "1989-01-29",
+              "gender": "F",
+              "region_id": 3504503,
+              "city": "Avaré",
+              "state": "SP",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7397,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7397,
+              "name": "Amena Buoro Dadalto Chiecon Cescon",
+              "birth_born": "1962-05-22",
+              "gender": "F",
+              "region_id": 3124203,
+              "city": "Espera Feliz",
+              "state": "MG",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7389,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7389,
+              "name": "Conner Valiatti Bellè Veronese",
+              "birth_born": "1969-02-06",
+              "gender": "M",
+              "region_id": 2304400,
+              "city": "Fortaleza",
+              "state": "CE",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7393,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7393,
+              "name": "Alésia Battistella Partele Casagrande Belli",
+              "birth_born": "1949-09-06",
+              "gender": "F",
+              "region_id": 2304400,
+              "city": "Fortaleza",
+              "state": "CE",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7481,
+            "occurrences": 2,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7481,
+              "name": "Nildemar Gouvea Bravin Fornazier",
+              "birth_born": "1973-01-01",
+              "gender": "M",
+              "region_id": 3529005,
+              "city": "Marília",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7379,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7379,
+              "name": "Graziela Matielo Breziniscki Piaz",
+              "birth_born": "1992-04-25",
+              "gender": "F",
+              "region_id": 3523107,
+              "city": "Itaquaquecetuba",
+              "state": "SP",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7367,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7367,
+              "name": "Dina Christiansen Zanelato Zampiroli Pianissoli",
+              "birth_born": "1965-11-05",
+              "gender": "F",
+              "region_id": 4313805,
+              "city": "Palmitinho",
+              "state": "RS",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7409,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7409,
+              "name": "Geraldo Bandeira Fiorotto Moniz",
+              "birth_born": "1950-06-14",
+              "gender": "M",
+              "region_id": 5217609,
+              "city": "Planaltina",
+              "state": "GO",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7373,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7373,
+              "name": "Albina Rizatto Vasoler Gardiman",
+              "birth_born": "1969-06-23",
+              "gender": "F",
+              "region_id": 1200401,
+              "city": "Rio Branco",
+              "state": "AC",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7357,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7357,
+              "name": "Franciely Ferrari Bassetti Comerio",
+              "birth_born": "1978-04-09",
+              "gender": "F",
+              "region_id": 1721109,
+              "city": "Tocantínia",
+              "state": "TO",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7372,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7372,
+              "name": "Ulises Manfredo Denadai Coutinho Landeira",
+              "birth_born": "1956-01-03",
+              "gender": "M",
+              "region_id": 2918407,
+              "city": "Juazeiro",
+              "state": "BA",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7487,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7487,
+              "name": "Veridiana Teves Ferrari Reinehr",
+              "birth_born": "2003-09-07",
+              "gender": "F",
+              "region_id": 2926400,
+              "city": "Riacho de Santana",
+              "state": "BA",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7462,
+            "occurrences": 2,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7462,
+              "name": "Leonardo Deschievane Longa",
+              "birth_born": "2007-10-04",
+              "gender": "M",
+              "region_id": 4205407,
+              "city": "Florianópolis",
+              "state": "SC",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7359,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7359,
+              "name": "Ravena Tedoldi Sabino",
+              "birth_born": "1952-06-28",
+              "gender": "F",
+              "region_id": 1302603,
+              "city": "Manaus",
+              "state": "AM",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7440,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7440,
+              "name": "Jonas Barreto Stelzer Meneses",
+              "birth_born": "1994-04-29",
+              "gender": "M",
+              "region_id": 3513801,
+              "city": "Diadema",
+              "state": "SP",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7365,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7365,
+              "name": "Madden Mikkelsen Premero Simonato",
+              "birth_born": "1990-04-16",
+              "gender": "M",
+              "region_id": 1302603,
+              "city": "Manaus",
+              "state": "AM",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7358,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7358,
+              "name": "Durval Camargo Gavina",
+              "birth_born": "1965-07-13",
+              "gender": "M",
+              "region_id": 3551009,
+              "city": "São Vicente",
+              "state": "SP",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7406,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7406,
+              "name": "Mitchell Zaganelli Perreira Queirós",
+              "birth_born": "1961-12-22",
+              "gender": "M",
+              "region_id": 3205309,
+              "city": "Vitória",
+              "state": "ES",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7350,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7350,
+              "name": "Estefani Góes Küster",
+              "birth_born": "1967-07-12",
+              "gender": "F",
+              "region_id": 3304557,
+              "city": "Rio de Janeiro",
+              "state": "RJ",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7377,
+            "occurrences": 1,
+            "max_distance": 6,
+            "vertex": {
+              "user_id": 7377,
+              "name": "Ândreo Cambiage Busetti Mastella",
+              "birth_born": "1971-03-14",
+              "gender": "M",
+              "region_id": 4201406,
+              "city": "Araranguá",
+              "state": "SC",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7478,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7478,
+              "name": "Kevin Agnoi Gentina Barreto",
+              "birth_born": "1947-06-14",
+              "gender": "M",
+              "region_id": 3550308,
+              "city": "São Paulo",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7468,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7468,
+              "name": "Albina Coppo D'Agostino",
+              "birth_born": "1970-06-06",
+              "gender": "F",
+              "region_id": 3305109,
+              "city": "São João de Meriti",
+              "state": "RJ",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7355,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7355,
+              "name": "Kyler Friezelle Sperotto Liberator Nova",
+              "birth_born": "2001-11-19",
+              "gender": "M",
+              "region_id": 3519071,
+              "city": "Hortolândia",
+              "state": "SP",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7482,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7482,
+              "name": "Osias Penido Sabino",
+              "birth_born": "1992-07-21",
+              "gender": "M",
+              "region_id": 3518701,
+              "city": "Guarujá",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7420,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7420,
+              "name": "Skyler Pola Scardino",
+              "birth_born": "1966-06-02",
+              "gender": "M",
+              "region_id": 2211001,
+              "city": "Teresina",
+              "state": "PI",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7388,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7388,
+              "name": "Estéfana Camporez Vinco Mastrantoni Arajuo",
+              "birth_born": "1996-08-09",
+              "gender": "F",
+              "region_id": 3167608,
+              "city": "Simonésia",
+              "state": "MG",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7383,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7383,
+              "name": "Dercy Pontara Vadagnin",
+              "birth_born": "1973-01-05",
+              "gender": "F",
+              "region_id": 3541000,
+              "city": "Praia Grande",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7488,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7488,
+              "name": "Reece Giro Lisboa Lorencini",
+              "birth_born": "2004-11-07",
+              "gender": "M",
+              "region_id": 3300902,
+              "city": "Cambuci",
+              "state": "RJ",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7464,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7464,
+              "name": "Almir Fabis Dall'ava Vicini",
+              "birth_born": "1970-07-05",
+              "gender": "M",
+              "region_id": 2100907,
+              "city": "Araioses",
+              "state": "MA",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7354,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7354,
+              "name": "Gunner Lorenção Majeski Vida",
+              "birth_born": "2001-05-10",
+              "gender": "M",
+              "region_id": 3556800,
+              "city": "Viradouro",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7446,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7446,
+              "name": "Ermias Jensdatter Zandonade Schael Rios",
+              "birth_born": "1988-07-18",
+              "gender": "M",
+              "region_id": 5100201,
+              "city": "Água Boa",
+              "state": "MT",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7457,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7457,
+              "name": "Adalberto Cenedesi Smith Frais",
+              "birth_born": "1967-03-22",
+              "gender": "M",
+              "region_id": 2209906,
+              "city": "São João da Serra",
+              "state": "PI",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7361,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7361,
+              "name": "Caila Monente Fiorez Perlatti",
+              "birth_born": "1976-02-07",
+              "gender": "F",
+              "region_id": 2504009,
+              "city": "Campina Grande",
+              "state": "PB",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7385,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7385,
+              "name": "Marilza Libera Benevides Bozzi",
+              "birth_born": "1967-07-17",
+              "gender": "F",
+              "region_id": 3550308,
+              "city": "São Paulo",
+              "state": "SP",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7452,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7452,
+              "name": "Ítala Johannesen Bortoloti Airoso",
+              "birth_born": "2000-04-13",
+              "gender": "F",
+              "region_id": 3520400,
+              "city": "Ilhabela",
+              "state": "SP",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7428,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7428,
+              "name": "Celisia Sodre Morelo Ayrosa",
+              "birth_born": "1954-10-09",
+              "gender": "F",
+              "region_id": 1302603,
+              "city": "Manaus",
+              "state": "AM",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7399,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7399,
+              "name": "Helen Soldan Machado",
+              "birth_born": "1959-09-18",
+              "gender": "F",
+              "region_id": 3509502,
+              "city": "Campinas",
+              "state": "SP",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7387,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7387,
+              "name": "Nayane Madsen Vasconcellos",
+              "birth_born": "1954-12-04",
+              "gender": "F",
+              "region_id": 3138401,
+              "city": "Leopoldina",
+              "state": "MG",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7477,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7477,
+              "name": "Florbela Gobbi Braga Rios Bravato",
+              "birth_born": "1999-11-07",
+              "gender": "F",
+              "region_id": 3550308,
+              "city": "São Paulo",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7465,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7465,
+              "name": "Maria Helena Binelle Francischetto Soares Nicolini",
+              "birth_born": "1983-08-14",
+              "gender": "F",
+              "region_id": 5105259,
+              "city": "Lucas do Rio Verde",
+              "state": "MT",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7418,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7418,
+              "name": "Alessia Tsuchiya Capucho",
+              "birth_born": "1984-06-13",
+              "gender": "F",
+              "region_id": 3300951,
+              "city": "Comendador Levy Gasparian",
+              "state": "RJ",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7375,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7375,
+              "name": "Eurico Destéfani Pianassole",
+              "birth_born": "2007-12-03",
+              "gender": "M",
+              "region_id": 2508307,
+              "city": "Lagoa Seca",
+              "state": "PB",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7424,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7424,
+              "name": "Mohamed Breziniscki Scoot Hostey Biasi",
+              "birth_born": "1983-10-28",
+              "gender": "M",
+              "region_id": 5208004,
+              "city": "Formosa",
+              "state": "GO",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7483,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7483,
+              "name": "Eliseo Novais Tassinari Nakamurada",
+              "birth_born": "2006-10-01",
+              "gender": "M",
+              "region_id": 5221858,
+              "city": "Valparaíso de Goiás",
+              "state": "GO",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7362,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7362,
+              "name": "Teodoro Augustinho Zerbone Della Donadello",
+              "birth_born": "1972-08-05",
+              "gender": "M",
+              "region_id": 2301000,
+              "city": "Aquiraz",
+              "state": "CE",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7371,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7371,
+              "name": "Vicenzia Gueberio Augustsen Canceglieri",
+              "birth_born": "1969-03-24",
+              "gender": "F",
+              "region_id": 3516408,
+              "city": "Franco da Rocha",
+              "state": "SP",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7444,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7444,
+              "name": "Yara Dalto Caridade Doimo Gosepi",
+              "birth_born": "1995-09-22",
+              "gender": "F",
+              "region_id": 2304400,
+              "city": "Fortaleza",
+              "state": "CE",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7498,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7498,
+              "name": "Arden Veloso Bindaco Nagem",
+              "birth_born": "1987-01-23",
+              "gender": "M",
+              "region_id": 4208906,
+              "city": "Jaraguá do Sul",
+              "state": "SC",
+              "account_type": "Corrente"
+            }
+          },
+          {
+            "id": 7438,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7438,
+              "name": "Kareem Calmon Cittera Nielson",
+              "birth_born": "1989-09-26",
+              "gender": "M",
+              "region_id": 2918407,
+              "city": "Juazeiro",
+              "state": "BA",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7353,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7353,
+              "name": "Rúbens Sipolatti Perez",
+              "birth_born": "1967-10-02",
+              "gender": "M",
+              "region_id": 3550308,
+              "city": "São Paulo",
+              "state": "SP",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7403,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7403,
+              "name": "José Miguel Daroz Rissi Shael",
+              "birth_born": "1966-09-18",
+              "gender": "M",
+              "region_id": 2304400,
+              "city": "Fortaleza",
+              "state": "CE",
+              "account_type": "Digital"
+            }
+          },
+          {
+            "id": 7493,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7493,
+              "name": "Ysabella Alba Bindaco",
+              "birth_born": "1973-11-15",
+              "gender": "F",
+              "region_id": 5215900,
+              "city": "Palminópolis",
+              "state": "GO",
+              "account_type": "Salário"
+            }
+          },
+          {
+            "id": 7394,
+            "occurrences": 1,
+            "max_distance": 8,
+            "vertex": {
+              "user_id": 7394,
+              "name": "Adele Tonoli Avila Almada",
+              "birth_born": "1990-08-30",
+              "gender": "F",
+              "region_id": 2607208,
+              "city": "Ipojuca",
+              "state": "PE",
+              "account_type": "Poupança"
+            }
+          },
+          {
+            "id": 7473,
+            "occurrences": 1,
+            "max_distance": 7,
+            "vertex": {
+              "user_id": 7473,
+              "name": "Gabrielly Frachin Lachini",
+              "birth_born": "1990-09-24",
+              "gender": "F",
+              "region_id": 5107602,
+              "city": "Rondonópolis",
+              "state": "MT",
+              "account_type": "Digital"
+            }
+          }
+        ],
+        "vertices": null,
+        "edges": null
+      }
+    }
+  }
+}
