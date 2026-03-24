@@ -438,14 +438,16 @@ async def get_api_graph_find(
         }
         sql_cmd: str = sql_graph_motif_find(**params)
         results_df: DataFrame = get_dataframe_from_sql(sql_cmd)
+
+        # Collect results from the DataFrame
+        rows = results_df.collect()
+
+        # Convert the JSON from result to a Python dictionary
+        if rows:
+            graph_dict: dict = json.loads(rows[0][0])  # Convert the JSON string from the first row and first column of the DataFrame to a Python dictionary
+        else:
+            graph_dict: dict = { "vertices": [], "edges": [] }
         
-        # empty output
-        graph_dict: dict = { "vertices": [], "edges": [] }
-
-        # Convert the JSON from resulto to a Python dictionary
-        if (isinstance(results_df, pyspark.sql.connect.dataframe.DataFrame) and (results_df.count() > 0)):            
-            graph_dict: dict = json.loads(results_df.collect()[0][0])  # 
-
         # Successful return graph data
         return graph_dict
     
@@ -544,13 +546,15 @@ async def get_api_graph_allpaths(
         }
         sql_cmd: str = sql_graph_all_paths(**params)
         results_df: DataFrame = get_dataframe_from_sql(sql_cmd)
-        
-        # empty output
-        graph_dict: dict = { "vertices": [], "edges": [] }
 
-        # Convert the JSON from resulto to a Python dictionary
-        if (isinstance(results_df, pyspark.sql.connect.dataframe.DataFrame) and (results_df.count() > 0)):            
-            graph_dict: dict = json.loads(results_df.collect()[0][0])  # 
+        # Collect results from the DataFrame
+        rows = results_df.collect()
+
+        # Convert the JSON from result to a Python dictionary
+        if rows:
+            graph_dict: dict = json.loads(rows[0][0])  # Convert the JSON string from the first row and first column of the DataFrame to a Python dictionary
+        else:
+            graph_dict: dict = { "vertices": [], "edges": [] }
 
         # Successful return graph data
         return graph_dict
@@ -650,13 +654,15 @@ async def get_api_graph_shortestpath(
         }
         sql_cmd: str = sql_graph_shortest_path(**params)
         results_df: DataFrame = get_dataframe_from_sql(sql_cmd)
-        
-        # empty output
-        graph_dict: dict = { "vertices": [], "edges": [] }
 
-        # Convert the JSON from resulto to a Python dictionary
-        if (isinstance(results_df, pyspark.sql.connect.dataframe.DataFrame) and (results_df.count() > 0)):            
-            graph_dict: dict = json.loads(results_df.collect()[0][0])  # 
+        # Collect results from the DataFrame
+        rows = results_df.collect()
+
+        # Convert the JSON from result to a Python dictionary
+        if rows:
+            graph_dict: dict = json.loads(rows[0][0])  # Convert the JSON string from the first row and first column of the DataFrame to a Python dictionary
+        else:
+            graph_dict: dict = { "vertices": [], "edges": [] }
 
         # Successful return graph data
         return graph_dict
@@ -752,13 +758,15 @@ async def get_api_graph_triangulation(
         }
         sql_cmd: str = sql_graph_vertex_triangulation(**params)
         results_df: DataFrame = get_dataframe_from_sql(sql_cmd)
-        
-        # empty output
-        graph_dict: dict = { "vertices": [], "edges": [] }
 
-        # Convert the JSON from resulto to a Python dictionary
-        if (isinstance(results_df, pyspark.sql.connect.dataframe.DataFrame) and (results_df.count() > 0)):            
-            graph_dict: dict = json.loads(results_df.collect()[0][0])  # 
+        # Collect results from the DataFrame
+        rows = results_df.collect()
+
+        # Convert the JSON from result to a Python dictionary
+        if rows:
+            graph_dict: dict = json.loads(rows[0][0])  # Convert the JSON string from the first row and first column of the DataFrame to a Python dictionary
+        else:
+            graph_dict: dict = { "vertices": [], "edges": [] }
 
         # Successful return graph data
         return graph_dict

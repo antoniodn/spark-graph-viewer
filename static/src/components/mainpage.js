@@ -1201,7 +1201,7 @@ function loadTypesVeticesEdges(context) {
 
     // Display loading feedback.
     $(".alert-message").removeClass("text-danger").addClass("text-secondary");
-    $(".alert-message-border").removeClass("border-danger bg-danger-subtle").removeClass("border-secondary bg-secondary-subtle");
+    $(".alert-message-border").removeClass("border-danger bg-danger-subtle").addClass("border-secondary bg-secondary-subtle");
     $(".alert-message").text("Wait, loading data...");
     $(".alert-message, .alert-message-border").removeClass("d-none");
 
@@ -1484,6 +1484,9 @@ function fileReadGraphNotebook(context) {
     if (!context) {
         return;
     }
+
+    // Initialize a new graph notebook state to ensure a clean slate before loading.
+    newGraphNotebook(context);
 
     // Remove any existing error modal before starting the process.
     $("#errorLoadGraphNotebookModal").remove();
@@ -1772,13 +1775,6 @@ function newGraphNotebook(context) {
     $(".query-tab-header-close").trigger("click");
 
     // Reset the internal data structure to its initial undefined state.
-    // context.Data = {
-    //     catalog: undefined,
-    //     vertices: undefined,
-    //     vertices_table: undefined,
-    //     edges: undefined,
-    //     edges_table: undefined,
-    // };
     const newContext = createInitialState();
     Object.keys(newContext).forEach(key => {
         context[key] = newContext[key];

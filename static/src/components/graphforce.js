@@ -61,7 +61,7 @@ const formatEdge = (edge_vector, key_src, key_dst) => {
         
         // Return the rest + new keys set by variables
         return { ...rest, ["source"]: source, ["target"]: target }; 
-    }).filter(e => e.source && (e.source !== null) && e.target && (e.target !== null));
+    }).filter(e => (e.source !== undefined) && (e.source !== null) && (e.target !== undefined) && (e.target !== null));
 };
 
 /**
@@ -83,12 +83,12 @@ const createDefaultConfig = (data, svg_config) => {
         vertices_distance: 75,
         width: 2000,
         height: 1500,
-        vertices: [...new Set(data.vertices.map(d => (d[svg_config?.mapping?.vertex?.type] || "_")))]
+        vertices: [...new Set(data.vertices.map(d => (d[svg_config?.mapping?.vertex?.type] !== undefined ? d[svg_config?.mapping?.vertex?.type] : "_")))]
             .reduce((accumulator, currentValue) => {
                 accumulator[currentValue] = {color:"#7f7f7f", icon:{prefix:"far", iconName:"file-lines"}};
                 return accumulator;
             }, {}),
-        edges: [...new Set(data.edges.map(d => (d[svg_config?.mapping?.edge?.type] || "_")))]
+        edges: [...new Set(data.edges.map(d => (d[svg_config?.mapping?.edge?.type] !== undefined ? d[svg_config?.mapping?.edge?.type] : "_")))]
             .reduce((accumulator, currentValue) => {
                 accumulator[currentValue] = { color:"#7f7f7f" };
                 return accumulator;
@@ -284,24 +284,27 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
     const propTblBody = $(`#propertyTableBody-${indexId}`);
     propTblBody.empty();
 
+    // Define a maximum text size for display to prevent overflow in the properties panel.
+    const MAX_TEXT_SIZE = 512;
+
     // Checks if the element exists; if it does not exist, returns without doing anything
     if (!element) return;
 
     const VERTEX_KEYS = Array.from(new Set([
-        svg_config?.mapping?.vertex?.id || "",
-        svg_config?.mapping?.vertex?.label || "",
-        svg_config?.mapping?.vertex?.type || "_"
+        (svg_config?.mapping?.vertex?.id !== undefined ? svg_config?.mapping?.vertex?.id : ""),
+        (svg_config?.mapping?.vertex?.label !== undefined ? svg_config?.mapping?.vertex?.label : ""),
+        (svg_config?.mapping?.vertex?.type !== undefined ? svg_config?.mapping?.vertex?.type : "_")
     ]));
     const EDGES_KEYS = Array.from(new Set([
-        svg_config?.mapping?.edge?.src || "",
-        svg_config?.mapping?.edge?.dst || "",
-        svg_config?.mapping?.edge?.type || "_"
+        (svg_config?.mapping?.edge?.src !== undefined ? svg_config?.mapping?.edge?.src : ""),
+        (svg_config?.mapping?.edge?.dst !== undefined ? svg_config?.mapping?.edge?.dst : ""),
+        (svg_config?.mapping?.edge?.type !== undefined ? svg_config?.mapping?.edge?.type : "_")
     ]));
     var type = element ? element["___typ"] : null;
 
     const elConfig = (type == "vertex") ? 
-                        (svg_config?.vertices || {})[element[svg_config?.mapping?.vertex?.type || "_"] || "_"] :
-                        (svg_config?.edges || {})[element[svg_config?.mapping?.edge?.type || "_"] || "_"];
+                        (svg_config?.vertices !== undefined ? svg_config?.vertices : {})[element[(svg_config?.mapping?.vertex?.type !== undefined) ? svg_config?.mapping?.vertex?.type : "_"] || "_"] :
+                        (svg_config?.edges !== undefined ? svg_config?.edges : {})[element[(svg_config?.mapping?.edge?.type !== undefined) ? svg_config?.mapping?.edge?.type : "_"] || "_"];
 
     if (type === null) {
         return;
@@ -326,7 +329,7 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
                                         document.createTextNode(Utils.truncateText(element[key], 32) )
                                     )
                             }
-                            return document.createTextNode(Utils.truncateText(element[key], 128) );
+                            return document.createTextNode(Utils.truncateText(element[key], MAX_TEXT_SIZE) );
                         })()                                
                     )
                 );
@@ -344,7 +347,7 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
                 const row = $("<tr>", {"class":"border-bottom"})
                     .append(
                         $("<td>", {"class":"fw-bold font-extra-small", "style":"width: 74px;"}).append(document.createTextNode(key)),
-                        $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(String(element[key]), 128)))
+                        $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(String(element[key]), MAX_TEXT_SIZE)))
                     );
                 propTblBody.append(row);
             }
@@ -379,7 +382,7 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
                         $("<div>", {"class":"d-flex"})
                             .append(
                                 $("<div>", {"class":"m-0 me-2 p-0 rounded-circle", "style":`width: 16px; height: 16px; background-color: ${elConfig?.color}; border: 1px solid gray; box-sizing: border-box;`}),
-                                document.createTextNode(Utils.truncateText(element[svg_config?.mapping?.edge?.type] || "-", 128))
+                                document.createTextNode(Utils.truncateText((element[svg_config?.mapping?.edge?.type] !== undefined) ? element[svg_config?.mapping?.edge?.type] : "-", MAX_TEXT_SIZE))
                             )
                     )
                 )
@@ -399,21 +402,21 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
             $("<tr>", {"class":"border-bottom"})
                 .append(
                     $("<td>", {"class":"fw-bold font-extra-small", "style":"width: 74px;"}).append(document.createTextNode(svg_config?.mapping?.vertex?.id || "id")),
-                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(source[svg_config?.mapping?.vertex?.id || ""], 128)))
+                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText((source[svg_config?.mapping?.vertex?.id || "_"] !== undefined) ? source[svg_config?.mapping?.vertex?.id || "_"] : "", MAX_TEXT_SIZE)))
                 )
         );
         source[svg_config?.mapping?.vertex?.label] && (source[svg_config?.mapping?.vertex?.label] != source[svg_config?.mapping?.vertex?.id]) && propTblBody.append(
             $("<tr>", {"class":"border-bottom"})
                 .append(
                     $("<td>", {"class":"fw-bold font-extra-small", "style":"width: 74px;"}).append(document.createTextNode(svg_config?.mapping?.vertex?.label || "label")),
-                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(source[svg_config?.mapping?.vertex?.label || ""], 128)))
+                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText((source[svg_config?.mapping?.vertex?.label || ""] !== undefined) ? source[svg_config?.mapping?.vertex?.label || ""] : "", MAX_TEXT_SIZE)))
                 )
         );
         source[svg_config?.mapping?.vertex?.type] && propTblBody.append(
             $("<tr>", {"class":"border-bottom"})
                 .append(
                     $("<td>", {"class":"fw-bold font-extra-small", "style":"width: 74px;"}).append(document.createTextNode(svg_config?.mapping?.vertex?.type || "type")),
-                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(source[svg_config?.mapping?.vertex?.type || ""], 128)))
+                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText((source[svg_config?.mapping?.vertex?.type || ""] !== undefined) ? source[svg_config?.mapping?.vertex?.type || ""] : "", MAX_TEXT_SIZE)))
                 )
         );
         
@@ -431,21 +434,21 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
             $("<tr>", {"class":"border-bottom"})
                 .append(
                     $("<td>", {"class":"fw-bold font-extra-small", "style":"width: 74px;"}).append(document.createTextNode(svg_config?.mapping?.vertex?.id || "id")),
-                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(target[svg_config?.mapping?.vertex?.id], 128)))
+                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText((target[svg_config?.mapping?.vertex?.id || ""] !== undefined) ? target[svg_config?.mapping?.vertex?.id || ""] : "", MAX_TEXT_SIZE)))
                 )
         );
         target[svg_config?.mapping?.vertex?.label] && (target[svg_config?.mapping?.vertex?.label] != target[svg_config?.mapping?.vertex?.id]) && propTblBody.append(
             $("<tr>", {"class":"border-bottom"})
                 .append(
                     $("<td>", {"class":"fw-bold font-extra-small"}).append(document.createTextNode(svg_config?.mapping?.vertex?.label || "label")),
-                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(target[svg_config?.mapping?.vertex?.label || ""], 128)))
+                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText((target[svg_config?.mapping?.vertex?.label || ""] !== undefined) ? target[svg_config?.mapping?.vertex?.label || ""] : "", MAX_TEXT_SIZE)))
                 )
         );
         target[svg_config?.mapping?.vertex?.type] && propTblBody.append(
             $("<tr>", {"class":"border-bottom"})
                 .append(
                     $("<td>", {"class":"fw-bold font-extra-small"}).append(document.createTextNode(svg_config?.mapping?.vertex?.type || "type")),
-                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(target[svg_config?.mapping?.vertex?.type || ""], 128)))
+                    $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText((target[svg_config?.mapping?.vertex?.type || ""] !== undefined) ? target[svg_config?.mapping?.vertex?.type || ""] : "", MAX_TEXT_SIZE)))
                 )
         );
 
@@ -459,7 +462,7 @@ const showProperties = (indexId, element, svg_config = {}, graph_data) => {
                 const row = $("<tr>", {"class":"border-bottom"})
                     .append(
                         $("<td>", {"class":"fw-bold font-extra-small"}).append(document.createTextNode(key)),
-                        $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(String(element[key]), 128)))
+                        $("<td>", {"class":"font-extra-small"}).append(document.createTextNode(Utils.truncateText(String((element[key] !== undefined) ? element[key] : ""), MAX_TEXT_SIZE)))
                     );
                 propTblBody.append(row);
             }
@@ -585,6 +588,10 @@ const showGraph_htmlElements = (indexId, jqSvgParent) => {
                     "id": `svg-clear-find-node-${indexId}`
                 }).append($("<i>", {"class": "fa-regular fa-circle-xmark"}))
             ),
+
+            $("<div>", {"class": "vr mx-3"}),
+
+            $("<span>", {"class": "text-muted small mt-1", "id": `vertices-edges-count-${indexId}`}).append(document.createTextNode("0 Vertices, 0 Edges")),
         ),
         // Main D3 container where the SVG will be rendered.
         $("<div>", {
@@ -744,7 +751,14 @@ const chartGraphForce = (indexId, data, svg_config = {}) => {
 
 
     // Defines the list of types of: vertices and edges
-    const vertices = data.vertices.map(d => Object.assign({}, d));
+    const vertices = data.vertices.map(d => {
+            const node = Object.assign({}, d);
+            delete node.x;
+            delete node.y;
+            delete node.fx;
+            delete node.fy;
+            return node;
+        });    
     const vertexTypes = [...new Set(vertices.map(d => d[svg_config?.mapping?.vertex?.type] || "_"))].sort();
     const customVerticesColorScheme = vertexTypes.map(c => (svg_config?.vertices || {})[c]?.color);
     const vertexColors = d3.scaleOrdinal(vertexTypes, customVerticesColorScheme.concat(d3.schemeCategory10));
@@ -756,10 +770,11 @@ const chartGraphForce = (indexId, data, svg_config = {}) => {
 
     // Defines the physical simulation parameters for the force graph.
     const simulation = d3.forceSimulation(vertices)
-        .force("node", d3.forceLink(edges).id(d => d[svg_config?.mapping?.vertex?.id] || ""))
+        .force("link", d3.forceLink(edges).id(d => d[svg_config?.mapping?.vertex?.id]))
         .force("charge", d3.forceManyBody().strength(-600))
-        .force("x", d3.forceX())
-        .force("y", d3.forceY())
+        .force("x", d3.forceX(0).strength(0.1)) // Puxa explicitamente para o 0
+        .force("y", d3.forceY(0).strength(0.1)) // Puxa explicitamente para o 0
+        .force("center", d3.forceCenter(0, 0))  // Fixa o centro de massa em 0,0
         .force("collide", d3.forceCollide().radius(NODE_DISTANCE));
 
     // Creates the SVG structure.
@@ -933,7 +948,7 @@ const chartGraphForce = (indexId, data, svg_config = {}) => {
         })
         .on("mousemove", function(event) {            
             const tooltip = bootstrap.Tooltip.getInstance(this);
-            if (tooltip && tooltip._popper) {
+            if ((tooltip !== undefined) && tooltip._popper) {
                 // 1. Creates a "Virtual Element" that Popper uses as a target.
                 const virtualElement = {
                     getBoundingClientRect: () => ({
@@ -965,7 +980,6 @@ const chartGraphForce = (indexId, data, svg_config = {}) => {
                 tooltip._popper.update();
             }            
         });
-
 
     // ===============================================================
     // Vertices/Nodes
@@ -1144,6 +1158,7 @@ const showGraphForce = (context, indexId, jqSvgParent, graph_data) => {
 
     // Initialize HTML skeleton (Toolbar and Property Box).
     showGraph_htmlElements(indexId, jqSvgParent);
+    $(`#vertices-edges-count-${indexId}`).text(`${graph_data.vertices.length} Vertices, ${graph_data.edges.length} Edges`);
 
     // Build the configuration object from global application settings.
     const svg_config = (() => {
@@ -1194,11 +1209,12 @@ const showGraphForce = (context, indexId, jqSvgParent, graph_data) => {
     graph_data.edges = classifyEdges(svg_config, graph_data.edges);
 
     // Data Integrity: Filter out edges with non-existent source/target nodes.
-    const idValidVertices = new Set(
-        graph_data.vertices.map(n => n[svg_config?.mapping?.vertex?.id] || "")
-    );
-    graph_data.edges = graph_data.edges.filter(l => 
-        idValidVertices.has(l.source) && idValidVertices.has(l.target)
+    const idValidVertices = Array.from(new Set(
+        graph_data.vertices.map(n => n[svg_config?.mapping?.vertex?.id])
+    ));
+
+    graph_data.edges = graph_data.edges.filter(e => 
+        idValidVertices.includes(e.source) && idValidVertices.includes(e.target)
     );
 
     // Render: Create the D3 SVG and append to the DOM.
